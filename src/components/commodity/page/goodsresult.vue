@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><i></i>所有商品流量 <el-date-picker
+    <p><i class="el-icon-d-arrow-right"></i>所有商品流量 <el-date-picker
       size="small"
       v-model="value7"
       type="daterange"
@@ -30,7 +30,7 @@
             </li>
           </ul>
       </div>
-      <p><i></i>商品效果明细
+      <p><i class="el-icon-d-arrow-right"></i>商品效果明细
       <div class="goodsDetail">
        <p> <label>日期：</label>
         <el-date-picker
@@ -364,10 +364,8 @@ export default {
     color: red;margin: 0 5px;
   }
  div>p>i {
-    border: 2px solid red;
-    font-size: 12px;
-    margin-right: 8px;
-    height: 16px;
+   font-size: 18px;margin-right: 5px;height: 16px;
+   color:red;font-weight: 600;
   }
  .el-date-editor--daterange.el-input__inner{
     width:250px;

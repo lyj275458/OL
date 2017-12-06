@@ -1,6 +1,6 @@
 <template>
 	<div>
- 		<p><i></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span></p>
+ 		<p><i class="el-icon-d-arrow-right"></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span></p>
  		<p>没有查询到符合要求的商品数量</p>
  	</div>
 </template>
@@ -10,7 +10,7 @@ export default {
   name: 'downlist',
   data(){
   	return {
-  		tableData:''
+  		tableData:[]
   	}
   }
 }
@@ -27,7 +27,8 @@ p{
 	color: red;margin: 0 5px;
 }
  p>i{
-	border: 2px solid red;font-size: 12px;margin-right: 8px;height: 16px;
+   font-size: 18px;margin-right: 5px;height: 16px;
+   color:red;font-weight: 600;
 }
 div p:last-child{
 	text-align: center;margin-top: 30px;color:#999

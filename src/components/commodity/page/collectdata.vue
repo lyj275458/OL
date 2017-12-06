@@ -1,6 +1,6 @@
 <template>
 <div>
-  <p><i></i>商品收藏流量产出总比 </p>
+  <p><i class="el-icon-d-arrow-right"></i>商品收藏流量产出总比 </p>
   <div class="datashow">
     <ul>
       <li v-for="(same,index) in arr">
@@ -28,7 +28,7 @@
       </li>
     </ul>
   </div>
-  <p><i></i>商品收藏流量产出明细 </p>
+  <p><i class="el-icon-d-arrow-right"></i>商品收藏流量产出明细 </p>
   <div class="goodsDetail">
     <p> <label>日期：</label>
       <el-date-picker
@@ -265,10 +265,8 @@ export default {
     color: red;margin: 0 5px;
   }
   div>p>i {
-    border: 2px solid red;
-    font-size: 12px;
-    margin-right: 8px;
-    height: 16px;
+    font-size: 18px;margin-right: 5px;height: 16px;
+    color:red;font-weight: 600;
   }
   .datashow{
     margin-top:24px;

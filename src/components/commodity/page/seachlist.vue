@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<p><i></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span></p>
+		<p><i class="el-icon-d-arrow-right"></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span></p>
  <el-table
     :data="tableData"
     style="width: 100%">
@@ -246,7 +246,8 @@ padding-left: 10px;
 	color: red;margin: 0 5px;
 }
  p>i{
-	border: 2px solid red;font-size: 12px;margin-right: 8px;height: 16px;
+	font-size: 18px;margin-right: 5px;height: 16px;
+   color:red;font-weight: 600;
 }
 .el-table span.cu{
 	color:"skyblue"

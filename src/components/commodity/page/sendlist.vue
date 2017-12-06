@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><i></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span><el-button type="primary" size="mini" plain>下载寄样单</el-button><el-button type="danger" size="mini" plain>发起寄样品申请</el-button></p>
+    <p><i class="el-icon-d-arrow-right"></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span><el-button type="primary" size="mini" plain>下载寄样单</el-button><el-button type="danger" size="mini" plain>发起寄样品申请</el-button></p>
     <el-table
       :data="tableData"
       style="width: 100%">
@@ -191,7 +191,8 @@
     color: red;margin: 0 5px;
   }
   p>i{
-    border: 2px solid red;font-size: 12px;margin-right: 8px;height: 16px;
+    font-size: 18px;margin-right: 5px;height: 16px;
+    color:red;font-weight: 600;
   }
   .el-table span.cu{
     color:"skyblue"
