@@ -132,12 +132,12 @@ export default {
     ])
   },
   activated(){
-      this.name='',
-      this.isTure='',
-      this.des='',
-      this.dataList='',
-        this.leading='',
-        this.dataList=''
+      this.name='';
+      this.isTure='';
+      this.des='';
+      this.dataList='';
+        this.leading='';
+        this.dataList='';
     this.guilist()
   },
   mounted(){

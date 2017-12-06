@@ -292,7 +292,6 @@
           name:$input[0].value,
           specId:this.smallguigeResult.id
         }
-        console.log(data.id)
       this.updateProductActions(data)
       }
 
