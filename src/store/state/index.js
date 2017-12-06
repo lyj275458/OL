@@ -98,6 +98,14 @@ const  editor = {//定义入参
     name: '',
     specId: ''
   },
+  //修改一个大规格明细
+  updateProductSpecMM:{
+    //categoryId:'',
+    id:'',
+    name:'',
+    showLogo:'',
+    leading:''
+  },
   //删除分类下的一个商品规格模板
   deleteProductMM:{
     id:''

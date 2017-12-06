@@ -49,6 +49,8 @@ export const SET_GET_TAG_BY_ID = 'SET_GET_TAG_BY_ID';
 export const GET_GET_TAG_BY_ID = 'GET_GET_TAG_BY_ID';
 //修改一个小规格明细
 export const SET_UPDATE_PRODUCT = 'SET_UPDATE_PRODUCT';
+//修改一个大规格明细
+export const SET_UPDATE_PRODUCT_SPEC = 'SET_UPDATE_PRODUCT_SPEC';
 //删除分类下的一个商品规格模板
 export const SET_DELETE_PRODUCT = 'SET_DELETE_PRODUCT';
 //删除大规格模板下的一个小规格

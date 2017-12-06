@@ -54,7 +54,7 @@
           </p>
         </el-form-item>
         <el-form-item label="图片" v-if="updata1==1">
-          <p><input type="text" v-model="input4"></p>
+          <p>{{input4}}</p>
           <el-upload
             class="upload-demo"
             ref="uploadfirst"
@@ -92,13 +92,13 @@
           <p><input type="text" :value="updataSmallResult.name"></p>
         </el-form-item>
         <el-form-item label="主导规格">
-          <p class="leadIndex"><!--<input type="text" :value="smallguigeResult.leading">-->
+          <p class="leadIndex">
             <el-radio v-model="updata1" label=1>是</el-radio>
             <el-radio v-model="updata1" label=0>否</el-radio>
           </p>
         </el-form-item>
         <el-form-item label="图片" v-if="updata1==1">
-          <p><input type="text" v-model="input4"></p>
+          <p><input type="text" :value="updataSmallResult.logo"></p>
           <el-upload
             class="upload-demo"
             ref="uploadfirst"
@@ -190,7 +190,7 @@
       FlDataResult:{
         handler(curVal,oldVal){
           if(oldVal.num=='2' || oldVal.num=='3'){
-            this.input4=''
+              this.input4=''
               this.newname=''
           }
         },
@@ -230,6 +230,7 @@
         this.fenleiResultActions(data)
       },
       handleEdit(index, row) {
+        console.log(row)
         let data={
           obj:row,
           str:'vGuigeDetails',
@@ -262,6 +263,10 @@
           message:'上传成功',
           type: 'success'
         })
+        let $input=$('#inputList3 input')
+        if($input && this.FlDataResult.num!='2'){
+          $input[3].value = response.result
+        }
         this.input4 = response.result
       },
       upErre (response, file, fileList) {
@@ -280,10 +285,11 @@
         this.addProductSpecDetailActions(data)
       },
       updatasmall(){
+        let $input = $('#inputList3 input')
         let data={
           id:this.updataSmallResult.id,
-          logo:this.input4,
-          name:this.updataSmallResult.name,
+          logo:$input[3].value,
+          name:$input[0].value,
           specId:this.smallguigeResult.id
         }
         console.log(data.id)

@@ -301,6 +301,28 @@ const actions = {
   },
 
   //产品分类规格
+  //修改大规格明细
+  updateProductSpecActions (context,data){
+    context.commit('SET_UPDATE_PRODUCT_SPEC',data)
+    api.deletePpApi('/apis/product/category/spec/updateProductCategorySpec',qs.stringify(context.state.editor.updateProductSpecMM)).then(
+      res => {
+        if(res.ok){
+          context.dispatch('mSuccess')
+          context.dispatch('getProductSpecsActions',context.state.result.FlDataResult.obj)
+        }else{
+          context.dispatch('mWarning',res)
+        }
+      }).catch(
+      (error) => {
+        Message({
+          showClose: true,
+          message:'请求失败',
+          type: 'warning'
+        });
+      }
+    )
+
+  },
   //修改一个小规格明细
   updateProductActions(context,data){
     context.commit('SET_UPDATE_PRODUCT',data)

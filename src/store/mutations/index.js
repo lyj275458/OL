@@ -243,6 +243,20 @@ const mutations = {//mutations内是改变state内的值得作用
       state.editor.updateProductMM.specId=''
     }
   },
+  //修改一个da规格明细
+  [types.SET_UPDATE_PRODUCT_SPEC] (state,data){
+    if(data){
+      state.editor.updateProductSpecMM.id=data.id
+      state.editor.updateProductSpecMM.leading=data.leading
+      state.editor.updateProductSpecMM.name=data.name
+      state.editor.updateProductSpecMM.showLogo=data.showLogo
+    }else{
+      state.editor.updateProductSpecMM.id=''
+      state.editor.updateProductSpecMM.leading=''
+      state.editor.updateProductSpecMM.name=''
+      state.editor.updateProductSpecMM.showLogo=''
+    }
+  },
   //删除分类下的一个商品规格模板
   [types.SET_DELETE_PRODUCT] (state,id){
     if(id){

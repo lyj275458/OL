@@ -57,7 +57,8 @@
           </p>
         </el-form-item>
         <el-form-item label="展示背景图片">
-          <p class="leadIndex"><el-radio v-model="updata2" label=1>是</el-radio>
+          <p class="leadIndex">
+            <el-radio v-model="updata2" label=1>是</el-radio>
             <el-radio v-model="updata2" label=0>否</el-radio></p>
         </el-form-item>
         <el-form-item label="">
@@ -73,11 +74,13 @@
           <p><input type="text" v-model="name" ></p>
         </el-form-item>
         <el-form-item label="主导规格">
-          <p class="te"><el-radio v-model="leading" label=1>是</el-radio>
+          <p class="te">
+            <el-radio v-model="leading" label=1>是</el-radio>
             <el-radio v-model="leading" label=0>否</el-radio></p>
         </el-form-item>
         <el-form-item label="展示背景图">
-          <p class="te"><el-radio v-model="isTure" label=1>是</el-radio>
+          <p class="te">
+            <el-radio v-model="isTure" label=1>是</el-radio>
             <el-radio v-model="isTure" label=0>否</el-radio></p>
         </el-form-item>
         <el-form-item label="">
@@ -97,27 +100,6 @@ export default {
   name: 'editorList',
   data () {
     return {
-      tableData: [{
-        name: '尺寸',
-        leading: '是',
-        showLogo: '上海市普陀区金沙江路 1518 弄',
-        detail:'X'
-      }, {
-        name: '颜色',
-        leading: '是',
-        showLogo: '上海市普陀区金沙江路 1517 弄',
-        detail:'黄色'
-      }, {
-        name: '参数',
-        leading: '否',
-        showLogo: '上海市普陀区金沙江路 1519 弄',
-        detail:'1：list，2：num'
-      }, {
-        name: '各种字段',
-        leading: '否',
-        showLogo: '上海市普陀',
-        detail:'其他待定'
-      }],
       labelPosition:'right',
       leading:'',
       isTure:'',
@@ -129,9 +111,24 @@ export default {
 
     }
   },
+  watch:{
+    FlDataResult:{
+      handler(curVal,oldVal){
+        if(oldVal.num=='2' || oldVal.num=='3'){
+          console.log(this.smallguigeResult)
+         /* this.updata1=this.smallguigeResult.leading;
+          this.updata2=this.smallguigeResult.showLogo;*/
+          this.name='';
+          this.leading='';
+          this.isTure='';
+        }
+      },
+      deep:true
+    }
+  },
   computed:{
     ...mapGetters([
-      'getAllTreeResult','classResult','FlDataResult','getProductSpecDetailsResult','getProductSpecsResult','smallguigeResult'
+      'FlDataResult','getProductSpecsResult','smallguigeResult'
     ])
   },
   activated(){
@@ -148,8 +145,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'fenleiResultActions','deleteSpecDetailActions','getProductSpecsActions','getProductSpecDetailsActions','addProductSpecActions','deleteProductActions',
-      'addProductSpecDetailActions','updateProductActions'
+      'fenleiResultActions','deleteSpecDetailActions','getProductSpecsActions','addProductSpecActions','deleteProductActions','updateProductActions','updateProductSpecActions'
     ]),
     //分类下的规格
     guilist(){
@@ -190,7 +186,14 @@ export default {
       });
     },
     upDataChange(){
-      this.updateProductActions()//编辑提交
+      let $input=$('#inputList1 input')
+      let data={
+        id:this.smallguigeResult.id,
+        name:$input[0].value,
+        showLogo:this.updata2,
+        leading:this.updata1
+      }
+      this.updateProductSpecActions(data)//大规格编辑提交
 
     },
     toGuige(){
@@ -210,12 +213,6 @@ export default {
       this.fenleiResultActions(data)//跳转新增列表
     },
     pullNewsmall(){
-       /* let data={
-          logo:'safasfasfas.png',
-          name: '黄色',
-          specId: this.smallguigeResult.id
-        }
-      this.addProductSpecDetailActions(data)*/
       let data={
         obj:this.smallguigeResult,
         str:'vGuigeDetails',
@@ -233,7 +230,6 @@ export default {
         num:'1'
       }
       this.fenleiResultActions(data)
-      //this.getProductSpecDetailsActions(row.id)
     },
     pullNewone(){
       let data={
