@@ -3,9 +3,9 @@
     <el-container>
   	<el-header>
       <div class="header-t">
-      <img src="../../../static/logo.png" alt="">
+        <p :class="{cu : ttyy}" style="font-size: 28px;line-height: 60px;color:#ff2b81;height:60px;text-shadow: 5px 5px 5px #FF0000;">OL圈 <i style="font-size:20px;color: #fbffae;">管理后台</i></p>
      <!-- <button class="cu">返回首页</button>-->
-        <p class="h-title valign">OL圈2.0总平台</p>
+        <p class="h-title">OL圈2.0总平台</p>
       <el-menu
         :default-active="activeIndex2"
         class="el-menu-demo"
@@ -48,7 +48,8 @@ export default {
   data () {
     return {
       activeIndex: '1',
-      activeIndex2: '1'
+      activeIndex2: '1',
+      ttyy:true
     }
   },
   components:{
@@ -107,8 +108,9 @@ header .h-title{
   font-size: 18px;
 
 }
-header .header-t > img{
-  margin:16px 0;
+header .header-t > p:nth-child(2){
+  line-height: 60px;
+  height:60px;
 }
 header img.valign{
   width: 25px;height:25px;border-radius: 50%;margin:0 10px 0 0;
@@ -124,19 +126,6 @@ header img.valign{
 }
 .el-header{
   padding:0;position: fixed;z-index: 111;
-}
-/*header button{
-  width:60px;line-height: 20px;font-size:12px;margin:24px 160px 0 14px;
-  padding:0;border:1px solid #83848e;
-  -webkit-border-radius:5px ;
-  -moz-border-radius: 5px;
-  border-radius:5px ;
-  background: #303242;
-  color:#fff;
-
-}*/
-.el-container.is-vertical{
-
 }
 #myown{
 	font-size: 12px;

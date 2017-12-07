@@ -1,10 +1,8 @@
 <template>
   <div id="data">
-    <p id="toindex"><router-link to="index">首页</router-link> &gt;在线状态</p>
     <p><i></i>查询条件</p>
     <div class="ev-content">
       <label>订单编号：</label><el-input placeholder="请输入商品ID" size="small"></el-input>
-      <label>商品ID：</label><el-input placeholder="" size="small"></el-input>
       <br>
       <label>扣款时间：</label><el-select v-model="value" size="small">
       <el-option
@@ -36,7 +34,7 @@
         style="width: 100%">
         <el-table-column
           label="订单号"
-          width="182"
+          width="146"
           show-overflow-tooltip>
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.name }}</span>
@@ -44,30 +42,38 @@
         </el-table-column>
         <el-table-column
           label="商品编号"
-          width="182">
+          width="146">
           <template slot-scope="scope">
             <span style="margin-left: 10px;">{{ scope.row.id }}</span>
           </template>
         </el-table-column>
         <el-table-column
           label="商品名称"
-          width="182"
+          width="146"
           show-overflow-tooltip>
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.status }}</span>
           </template>
         </el-table-column>
         <el-table-column
-          label="扣款原因"
-          width="150"
+          label="成团时间"
+          width="147"
           show-overflow-tooltip>
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.temprice }}</span>
           </template>
         </el-table-column>
         <el-table-column
+          label="承诺发货时间	"
+          width="147"
+          show-overflow-tooltip>
+          <template slot-scope="scope">
+            <span style="margin-left: 10px">{{ scope.row.id }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
           label="扣款时间"
-          width="183"
+          width="147"
           show-overflow-tooltip>
           <template slot-scope="scope">
             <span style="margin-left: 10px">{{ scope.row.id }}</span>
@@ -90,7 +96,7 @@
   import { mapGetters } from 'vuex'
   import { mapActions } from 'vuex'
   export default {
-    name: 'OnlineState',
+    name: 'outMenoy',
     data () {
       return {
         options: [{
@@ -104,7 +110,7 @@
           label: '最近30天内'
         }],
         value:"快速选择时间",
-        tableData: [{
+        tableData: [/*{
           id: '1234567',
           name: '【意大利袋鼠100%纯棉正品 】 男士保暖内衣纯棉基础款 秋衣秋裤套装圆领薄款全棉打底',
           resource:'无',
@@ -118,7 +124,7 @@
           address: '【意大利袋鼠100%纯棉正品 】 男士保暖内衣纯棉基础款 秋衣秋裤套装圆领薄款全棉打底',
           status:'编辑中',
           type:"修改"
-        }],
+        }*/],
         value4:''
       }
     },
@@ -149,11 +155,15 @@
 </script>
 
 <style scoped>
+  #data{
+    width:1052px;
+  }
   #data #toindex{
     font: 16px/36px "微软雅黑";
     background:none;
     border:0;
     margin:0;
+    margin-top:10px ;
     color: #333;
     font-weight: 550;
     text-indent:0;
@@ -177,6 +187,9 @@
     /*height:52px;*/
     margin-right: 40px;
     margin-bottom:12px;
+  }
+  .ev-content .el-input:nth-child(6){
+    margin-right:20px;
   }
   .el-button--primary{
     width:100px;

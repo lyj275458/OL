@@ -4,7 +4,7 @@
       <el-button type="success" round size="mini" icon="el-icon-plus" @click="newPush()" style="margin-top: 10px">新增</el-button>
     </p>
     <div class="logo-list">
-      <label>品牌名称</label><el-input v-model="input" placeholder="请输入品牌名称" size="small"></el-input>
+      <label>品牌 ID</label><el-input v-model="input" placeholder="请输入品牌名称" size="small"></el-input>
       <el-button type="primary" round size="mini" icon="el-icon-search" @click="seachPp()">搜索</el-button>
     </div>
     <div class="footer-list">

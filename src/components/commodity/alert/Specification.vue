@@ -2,9 +2,13 @@
   <div>
     <!--大规格列表-->
     <div class="seach-list" id="inputList" v-if="FlDataResult.num=='1'">
-      <div style="overflow: hidden">
-        <el-tag>{{FlDataResult.obj.name}} 模板块</el-tag>
-        <el-button type="success" round size="mini" style="float: right;margin-right: 30px;" @click="pullNew()">新增规格模板</el-button>
+      <div style="overflow: hidden;background: #f0f9eb;position: relative;">
+          <el-alert
+            :title="FlDataResult.obj.name +' 模板块'"
+            type="success"
+            :closable="false" style="display: inline-block;width: 60%;padding: 10px;">
+          </el-alert>
+        <el-button type="success" round size="mini" style="position: absolute;right: 30px;top:50%;margin-top: -14px;" @click="pullNew()">新增规格模板</el-button>
       </div>
       <el-table
         :data="getProductSpecsResult"
@@ -48,18 +52,25 @@
       </div>
       <el-form :label-position="labelPosition" label-width="100px" :model="smallguigeResult">
         <el-form-item label="规格名称">
-          <p><input type="text" :value="smallguigeResult.name" ></p>
+          <p><input type="text" v-model="bigname" ></p>
         </el-form-item>
         <el-form-item label="主导规格">
-          <p class="leadIndex"><!--<input type="text" :value="smallguigeResult.leading">-->
-            <el-radio v-model="updata1" label=1>是</el-radio>
-            <el-radio v-model="updata1" label=0>否</el-radio>
+          <p class="leadIndex">
+            <!--<el-radio v-model="updata1" label=1>是</el-radio>
+            <el-radio v-model="updata1" label=0>否</el-radio>-->
+            <el-radio-group v-model="updata1">
+              <el-radio :label="1">是</el-radio>
+              <el-radio :label="0">否</el-radio>
+            </el-radio-group>
           </p>
         </el-form-item>
         <el-form-item label="展示背景图片">
           <p class="leadIndex">
-            <el-radio v-model="updata2" label=1>是</el-radio>
-            <el-radio v-model="updata2" label=0>否</el-radio></p>
+            <el-radio-group v-model="updata2">
+              <el-radio :label="1">是</el-radio>
+              <el-radio :label="0">否</el-radio>
+            </el-radio-group>
+          </p>
         </el-form-item>
         <el-form-item label="">
           <el-button type="success" size="small" plain @click="toGuige()">返回</el-button>
@@ -107,7 +118,9 @@ export default {
       dataList:'',
       updata1:'',
       updata2:'',
-      input4:''
+      input4:'',
+      name:'',
+      bigname:''
 
     }
   },
@@ -116,8 +129,9 @@ export default {
       handler(curVal,oldVal){
         if(oldVal.num=='2' || oldVal.num=='3'){
           console.log(this.smallguigeResult)
-         /* this.updata1=this.smallguigeResult.leading;
-          this.updata2=this.smallguigeResult.showLogo;*/
+          this.updata1=this.smallguigeResult.leading;
+          this.updata2=this.smallguigeResult.showLogo;
+          this.bigname=this.smallguigeResult.name
           this.name='';
           this.leading='';
           this.isTure='';
@@ -238,6 +252,7 @@ export default {
         name: this.name,
         showLogo: this.isTure
       }
+      console.log(data)
       this.addProductSpecActions(data)
     }
   }

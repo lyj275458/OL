@@ -12,8 +12,7 @@
     </el-option>
   </el-select>
    <div class="block">
-   	<label>申请时间：</label>
-    <el-date-picker
+   	<label>申请时间：</label><el-date-picker
       size="small"
       v-model="value4"
       type="datetimerange"
@@ -106,7 +105,7 @@ export default {
 	font: 12px/40px "微软雅黑";margin-right: 20px;
 }
 #goods >.el-input:nth-child(2),#goods >.el-input:nth-child(4){
-	width:190px;margin-right: 70px;
+	width:190px;margin-right: 50px;
 }
 #goods .block div.el-input[data-v-47c7e364]{
 	margin:0;
@@ -135,4 +134,9 @@ p{
 .el-table span.cu{
 	color:"skyblue"
 }
+  #goods label{
+    display: inline-block;
+    width:70px;
+    text-align: right;
+  }
 </style>

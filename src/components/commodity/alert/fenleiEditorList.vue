@@ -119,8 +119,10 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="叶子节点">
-          <p class="te"><el-radio v-model="input6" label=true>是</el-radio>
-            <el-radio v-model="input6" label=false>否</el-radio></p>
+          <p class="te">
+            <el-radio v-model="input6" label=true>是</el-radio>
+            <el-radio v-model="input6" label=false>否</el-radio>
+          </p>
         </el-form-item>
         <el-form-item label="排序值">
           <p><input type="text" v-model="input7"></p>
@@ -168,10 +170,10 @@
           <span style="margin-left: 10px" v-else></span>
         </el-form-item>
         <el-form-item label="">
-          <el-button type="success" size="small" plain @click="backIndex()">返回</el-button>
+          <el-button type="warning" size="small" plain @click="backIndex()">返回</el-button>
           <el-button
             size="small"
-            type="primary"
+            type="success"
             plain
             @click="oneUpChange()">编辑</el-button>
           <el-button
@@ -181,9 +183,9 @@
             @click="deleteChange()">删除</el-button>
           <el-button
             size="small"
-            type="danger"
+            type="primary"
             plain
-            v-if="FlDataResult.obj.leaf"
+            v-if="ByIdGetTreeResult.leaf==1"
             @click="oneManage()">规格管理</el-button>
         </el-form-item>
       </el-form>
@@ -324,7 +326,7 @@ export default {
           },
           oneManage(){
             let data={
-              obj:this.FlDataResult.obj,
+              obj:this.ByIdGetTreeResult,
               str:'vSpecification',
               where:'1'
             }

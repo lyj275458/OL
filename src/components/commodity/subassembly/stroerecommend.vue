@@ -287,6 +287,9 @@
     width:284px;
   }
   .ev-content label{
+    display: inline-block;
+    width:70px;
+    text-align: right;
     font-size:12px;
     color:#666;
     margin-right:10px;
@@ -294,7 +297,7 @@
   .ev-content .el-input{
     width:210px;
     /*height:52px;*/
-    margin-right: 40px;
+    margin-right: 30px;
     margin-bottom:12px;
   }
   .ev-content .el-input:nth-child(6){

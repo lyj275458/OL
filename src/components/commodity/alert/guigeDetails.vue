@@ -89,16 +89,18 @@
       </div>
       <el-form :label-position="labelPosition" label-width="100px" :model="updataSmallResult">
         <el-form-item label="规格详情">
-          <p><input type="text" :value="updataSmallResult.name"></p>
+          <p><input type="text" v-model="smallname"></p>
         </el-form-item>
-        <el-form-item label="主导规格">
+        <!--<el-form-item label="主导规格">
           <p class="leadIndex">
-            <el-radio v-model="updata1" label=1>是</el-radio>
-            <el-radio v-model="updata1" label=0>否</el-radio>
+            <el-radio-group v-model="updata1">
+              <el-radio :label="1">是</el-radio>
+              <el-radio :label="0">否</el-radio>
+            </el-radio-group>
           </p>
-        </el-form-item>
-        <el-form-item label="图片" v-if="updata1==1">
-          <p><input type="text" :value="updataSmallResult.logo"></p>
+        </el-form-item>-->
+        <el-form-item label="logo">
+          <p><input type="text" v-model="smallLogo"></p>
           <el-upload
             class="upload-demo"
             ref="uploadfirst"
@@ -177,7 +179,9 @@
         labelPosition:'right',
         updata1:'',
         updata2:'',
-        input4:''
+        input4:'',
+        smallname:'',
+        smallLogo:''
 
       }
     },
@@ -190,8 +194,11 @@
       FlDataResult:{
         handler(curVal,oldVal){
           if(oldVal.num=='2' || oldVal.num=='3'){
-              this.input4=''
-              this.newname=''
+              this.input4='';
+              this.newname='';
+            this.smallname=this.updataSmallResult.name;
+            this.smallLogo = this.updataSmallResult.logo;
+            this.updata2='';
           }
         },
         deep:true
@@ -263,10 +270,7 @@
           message:'上传成功',
           type: 'success'
         })
-        let $input=$('#inputList3 input')
-        if($input && this.FlDataResult.num!='2'){
-          $input[3].value = response.result
-        }
+       this.smallLogo = response.result
         this.input4 = response.result
       },
       upErre (response, file, fileList) {
@@ -288,7 +292,7 @@
         let $input = $('#inputList3 input')
         let data={
           id:this.updataSmallResult.id,
-          logo:$input[3].value,
+          logo:$input[1].value,
           name:$input[0].value,
           specId:this.smallguigeResult.id
         }
