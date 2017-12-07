@@ -9,7 +9,7 @@
      <label>店铺推荐1：</label><el-input placeholder="" size="small"></el-input>
      <label>店铺推荐2：</label><el-input placeholder="" size="small"></el-input>
      <label>店铺推荐3：</label><el-input placeholder="" size="small"></el-input>
-     <label>是否设置：</label><el-select v-model="value" size="small">
+     <label>是否设置：</label><el-select v-model="value" size="small" @visible-change="getallS(1)">
        <el-option
          v-for="item in options"
          :key="item.value"
@@ -18,7 +18,7 @@
        </el-option>
      </el-select>
       <br>
-      <el-button type="primary" round size="mini" @click="alertMe()">查询</el-button>
+      <el-button type="primary" round size="mini">查询</el-button>
     </div>
     <div class="line"></div>
     <p><i></i>查询结果<span>共查询到<i>{{options.length}}</i>条数据</span></p>
@@ -208,6 +208,9 @@
       ...mapActions([
         'popoverAlert'
       ]),
+      getallS(t){
+     this.$http.get('http://jisuarea.market.alicloudapi.com/area/all',{})
+      },
       alertMe(){
         this.popoverAlert('vBalance')
         console.log(this.popoverAlive)

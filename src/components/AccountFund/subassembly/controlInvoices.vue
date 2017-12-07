@@ -176,6 +176,11 @@
       ...mapActions([
 
       ]),
+      getallS(){
+        alert(1)
+      },
+
+
       onSubmit() {
         console.log('submit!');
       },
