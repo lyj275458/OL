@@ -85,6 +85,10 @@
    trueOrfalse: state => {
      return state.result.trueOrfalse
    },
+   //loading
+   loading: state => {
+     return state.result.loading
+   },
 
     alertnum: state => {
       return state.editor.num

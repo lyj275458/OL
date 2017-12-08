@@ -238,7 +238,7 @@
   }
   .ev-header{
     font:12px/26px "微软雅黑";text-indent:5px ;
-    margin:10px 0 28px 0;
+    margin:10px 0 0 0;
   }
   .ev-content{
     padding:24px 8px;

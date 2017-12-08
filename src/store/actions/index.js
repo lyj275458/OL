@@ -44,7 +44,6 @@ const actions = {
     console.log(list)
     return list.map(v => filterVal.map(j => v[j]))
   },
-
   //品牌模块切换
   classResultActions (context,data) {
     context.commit('classResultTypes',data)
@@ -87,6 +86,7 @@ const actions = {
       })
   },
   saveFormGet (context,funUrl) {
+    context.commit('changeloading')
     // axios.defaults.baseURL = context.state.editor.axiosUrl;
     axios({
       method: 'get',
@@ -96,6 +96,7 @@ const actions = {
     })
       .then(function(res){
         if(res.data.ok){
+          context.commit('changeloading')
           if(res.data.result){
             if(funUrl[1] != ''){
               context.commit(types[funUrl[1]],res)
@@ -113,6 +114,7 @@ const actions = {
         }
       })
       .catch(function(err){
+        context.commit('changeloading')
         console.log(err)
       })
   },
@@ -505,6 +507,11 @@ const actions = {
     }).then(res => {
       context.commit('GET_XIANJI_LIST',res)
     }).catch(err => {
+      /*Message({
+        showClose: true,
+        message:'请求失败',
+        type:'error'
+      });*/
       context.state.result.trueOrfalse=true
     })
   },

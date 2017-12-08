@@ -4,7 +4,6 @@
     <p><i></i>查询条件</p>
     <div class="ev-content">
       <label>订单编号：</label><el-input placeholder="请输入商品ID" size="small"></el-input>
-      <label>商品ID：</label><el-input placeholder="" size="small"></el-input>
       <br>
       <label>扣款时间：</label><el-select v-model="value" size="small">
       <el-option

@@ -62,4 +62,6 @@
 .icon-gupiao:before { content: "\e63e"; }
 
 .icon-zhihuinengyuanyunhoutaiku-qitatubiao-xitongweihu:before { content: "\e734"; }
-
+div.el-loading-mask{
+  z-index:1000;
+}

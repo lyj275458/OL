@@ -1,6 +1,7 @@
 <template>
   <div class="seach-list">
     <el-table
+      v-loading="loading"
       :data="getAllPpResult"
       style="width: 100%">
       <el-table-column
@@ -93,7 +94,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-      'getAllPpResult','getAllTreeResult','classResult'
+      'getAllPpResult','getAllTreeResult','classResult','loading'
     ])
   },
   methods: {

@@ -573,6 +573,8 @@ const result = { //接收请求后的数据
   smallguige:'',
   //小规格编辑
   updataSmall:{},
+  //loading
+  loading:false,
 
   loginResult:"",
   dingdanListResult:[]

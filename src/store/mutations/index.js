@@ -14,6 +14,10 @@ const mutations = {//mutations内是改变state内的值得作用
       state.result.popoverAlive.title = where;
     }
   },
+  //loading
+  changeloading (state) {
+    state.result.loading=!state.result.loading
+  },
   //品牌模块切换
   classResultTypes (state,data) {
     if (data.str) {

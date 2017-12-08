@@ -4,9 +4,13 @@
     <p><i></i>售后联系电话管理</p>
     <div class="ev-content">
       <p><i class="el-icon-phone-outline"></i>手机号：{{phone}}<span class="cu"><i class="el-icon-edit-outline"></i>编辑</span></p>
-      <el-tooltip class="item" effect="light" content="Right Center 提示文字" placement="right">
-        <i class="el-icon-question"></i>
-      </el-tooltip>
+      <el-popover
+        ref="popover4"
+        placement="right-start"
+        trigger="hover">
+        <img src="../../../../static/alert.png" alt="售后">
+      </el-popover>
+        <i class="el-icon-question" v-popover:popover4></i>
     </div>
     <p><i></i>退货地址管理<el-button type="success" round size="mini">+新增退货地址</el-button></p>
     <div class="chalist">

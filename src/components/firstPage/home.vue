@@ -74,8 +74,6 @@ export default {
 
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .el-container.is-vertical[data-v-12c28653]{
 	width:100%;height: auto;
@@ -106,7 +104,6 @@ header .header-t{
 header .h-title{
   color: #fff;
   font-size: 18px;
-
 }
 header .header-t > p:nth-child(2){
   line-height: 60px;
@@ -116,7 +113,7 @@ header img.valign{
   width: 25px;height:25px;border-radius: 50%;margin:0 10px 0 0;
 }
 .el-menu-demo{
-  /*width:664px;*/border-bottom: 0;
+ border-bottom: 0;
 }
 .el-menu-demo .el-menu-item{
   font-size: 16px;
@@ -125,7 +122,7 @@ header img.valign{
 	overflow: inherit;margin-left: 20px;
 }
 .el-header{
-  padding:0;position: fixed;z-index: 111;
+  padding:0;position: fixed;z-index: 1500;
 }
 #myown{
 	font-size: 12px;
