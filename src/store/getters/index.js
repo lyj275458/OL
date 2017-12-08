@@ -69,6 +69,22 @@
    pickerOptions2:state => {
      return state.result.pickerOptions2
    },
+   //省市选择器
+   cityListResult: state => {
+     return state.result.cityList
+   },
+   //城市列表
+   smallCityList: state => {
+     return state.result.smallCityList
+   },
+   //县级列表
+   xianjiList: state => {
+     return state.result.xianjiList
+   },
+   //是否禁用
+   trueOrfalse: state => {
+     return state.result.trueOrfalse
+   },
 
     alertnum: state => {
       return state.editor.num

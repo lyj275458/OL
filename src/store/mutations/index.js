@@ -367,7 +367,14 @@ const mutations = {//mutations内是改变state内的值得作用
   [types.GET_PARAMS_BY_CATEGORYID] (state,res){
     state.result.getParamsByCategoryIdResult=res.data.result
   },
-
+    //城市列表
+  [types.GET_SMALL_CITYLIST](state,res){
+    state.result.smallCityList=res.data.result
+  },
+  //县级列表
+  [types.GET_XIANJI_LIST](state,res){
+    state.result.xianjiList=res.data.result
+  },
 
 
 

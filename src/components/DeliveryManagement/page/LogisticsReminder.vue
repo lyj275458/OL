@@ -234,7 +234,6 @@
     font:14px/36px "微软雅黑";text-indent:5px ;
     border: 1px solid #fff3cf;
     margin:15px 0 4px 0;
-    width: 1030px;
     color:#333;
   }
   #smalltitle > p span{

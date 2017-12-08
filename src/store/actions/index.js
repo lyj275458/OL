@@ -480,7 +480,34 @@ const actions = {
       });
     }
   },
-
+  //城市选择请求
+  getcityListActions(context,id){
+    axios.get('http://jisuarea.market.alicloudapi.com/area/query',{
+      params: {
+        parentid:id
+      },
+      headers: {
+        "Authorization":"APPCODE fb1ee2813e9b433db7ff440eb8620446"
+      }
+    }).then(res => {
+      context.commit('GET_SMALL_CITYLIST',res)
+    })
+  },
+  //县选择请求
+  getxianActions(context,id){
+    axios.get('http://jisuarea.market.alicloudapi.com/area/query',{//post请求时 是三个参数  第一个是url 第二个传参 第三个配置项
+      params: {
+        parentid:id
+      },
+      headers: {
+        "Authorization":"APPCODE fb1ee2813e9b433db7ff440eb8620446"
+      }
+    }).then(res => {
+      context.commit('GET_XIANJI_LIST',res)
+    }).catch(err => {
+      context.state.result.trueOrfalse=true
+    })
+  },
 
 
   alertshow(context,status){
@@ -514,8 +541,6 @@ const actions = {
         url:"/apis/mobile/order/myOrder",
         params:context.state.editor.dingdanListMM
       }).then((res)=>{
-        // let datas=json.parse(res)
-
         context.commit('GET_DINGDAN_LIST_MM',res)
       })
     }

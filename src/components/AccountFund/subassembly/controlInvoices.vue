@@ -23,17 +23,29 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="注册地址：">
-          <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
+          <el-select v-model="items" @change="getallS(items)">
+            <el-option
+            v-for="item in cityListResult"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id">
+            </el-option>
           </el-select>
-          <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
+          <el-select v-model="smallItems" @change="getxian(smallItems)">
+            <el-option
+              v-for="item in smallCityList"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
+            </el-option>
           </el-select>
-          <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
+          <el-select v-model="xianList" :disabled="trueOrfalse">
+          <el-option
+            v-for="item in xianjiList"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id">
+          </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="">
@@ -148,6 +160,9 @@
     name: 'controlInvoices',
     data () {
       return {
+        items:'请选择省份',
+        smallItems:'请选择城市',
+        xianList:'请选择县级',
         form: {
           name: '',
           region: '',
@@ -169,15 +184,22 @@
     },
     computed:{
       ...mapGetters([
-
+        'cityListResult','smallCityList','xianjiList','trueOrfalse'
       ])
     },
     methods:{
       ...mapActions([
-
+        'getcityListActions','getxianActions'
       ]),
-      getallS(){
-        alert(1)
+      getallS(item){
+       this.$store.state.result.trueOrfalse=false
+        this.smallItems='请选择城市',
+        this.xianList='请选择县级'
+        this.getcityListActions(item)
+      },
+      getxian(it){
+        this.xianList='请选择县级'
+        this.getxianActions(it)
       },
 
 

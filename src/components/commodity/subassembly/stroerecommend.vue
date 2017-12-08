@@ -9,7 +9,7 @@
      <label>店铺推荐1：</label><el-input placeholder="" size="small"></el-input>
      <label>店铺推荐2：</label><el-input placeholder="" size="small"></el-input>
      <label>店铺推荐3：</label><el-input placeholder="" size="small"></el-input>
-     <label>是否设置：</label><el-select v-model="value" size="small" @visible-change="getallS(1)">
+     <label>是否设置：</label><el-select v-model="value" size="small">
        <el-option
          v-for="item in options"
          :key="item.value"
@@ -209,7 +209,25 @@
         'popoverAlert'
       ]),
       getallS(t){
-     this.$http.get('http://jisuarea.market.alicloudapi.com/area/all',{})
+     /*this.$http.get('http://jisuarea.market.alicloudapi.com/area/all',{}).then(res => {
+       console.log(res)
+     })*/
+    /* let that=this
+        $.ajax({
+          type:'get',
+          dataType:"json",
+          url:'http://jisuarea.market.alicloudapi.com/area/all',
+          beforeSend:function(request){
+            request.setRequestHeader("Authorization", "APPCODE " + "98ced78ffa3d462ea4c73e5680153794");
+          },
+          success:function (data) {
+            let arr=data.result.splice(0,34)
+            console.log(data)
+            that.options=arr
+            console.log(this.options)
+
+          }
+        })*/
       },
       alertMe(){
         this.popoverAlert('vBalance')

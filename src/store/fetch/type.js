@@ -74,6 +74,10 @@ export const SET_UPDATA_FENLEI_MO = 'SET_UPDATA_FENLEI_MO';
 //获取一个分类下的 商品参数模板
 export const SET_PARAMS_BY_CATEGORYID = 'SET_PARAMS_BY_CATEGORYID';
 export const GET_PARAMS_BY_CATEGORYID = 'GET_PARAMS_BY_CATEGORYID';
+//城市列表
+export const GET_SMALL_CITYLIST = 'GET_SMALL_CITYLIST';
+//县级列表
+export const GET_XIANJI_LIST = 'GET_XIANJI_LIST';
 
 
 

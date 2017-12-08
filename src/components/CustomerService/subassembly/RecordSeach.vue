@@ -248,6 +248,7 @@
   }
   #datate .ev-content .el-select,#datate .ev-content .el-select .el-input{
     width:130px;
+    margin-bottom:0;
   }
   #datate .el-button--primary{
     width:100px;
