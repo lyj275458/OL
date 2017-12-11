@@ -136,12 +136,10 @@
   }
   .table-list .big{
     width: 100%;
-    /*flex: 2;*/
   }
   .table-list .head-item input{
     margin-left: 10px;
     width:100%;
-    /*color: #999;*/
     font-size: 12px;
     border:0;
   }
@@ -173,7 +171,7 @@
         alert(0)
       },
       ...mapActions([
-        'popoverAlert','newPushActions'
+        'newPushActions'
       ]),
       newpush(){
       let data={

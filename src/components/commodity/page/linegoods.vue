@@ -68,7 +68,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-      'alertnum','loginResult','dingdanListResult'
+
     ])
   },
   components:{
@@ -76,7 +76,7 @@ export default {
   },
   methods:{
     ...mapActions([
-      'alertshow','showtime','qingqiuActions','dingdanListActions'
+
     ]),
     seachGoods(){
      //this.$router.push('/login')

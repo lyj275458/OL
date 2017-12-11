@@ -354,10 +354,7 @@ const actions = {
       res =>{
         if(res.ok){
           context.dispatch('mSuccess')
-          let data={
-            id:context.state.result.FlDataResult.obj.id
-          }
-          context.dispatch('getProductSpecsActions',data)
+          context.dispatch('getProductSpecsActions',{id:context.state.result.FlDataResult.obj.id})
         }else{
           context.dispatch('mWarning',res)
         }
@@ -512,9 +509,10 @@ const actions = {
   },
 
 
-  alertshow(context,status){
-    context.state.editor.num=status  //actions里面可以直接改变state里的数据，也可以调用mutations里的方法（下面就是）
+  alertshow(context){
+    //context.state.editor.num=status  //actions里面可以直接改变state里的数据，也可以调用mutations里的方法（下面就是）
     //context.commit('change',status)//commit方法调用mutations里的方法进行改变state里的值//dispatch是调用actions内自身的方法
+    context.dispatch('saveFormGet',['/city/getProvinces','',{}])
   },
   qingqiuActions(context,id){
     context.commit('SET_LOGIN_ALL_API',id)

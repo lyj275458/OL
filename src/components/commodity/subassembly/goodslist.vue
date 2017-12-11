@@ -34,7 +34,7 @@ export default {
   },
   methods:{
     ...mapActions([
-      'alertnum','loginResult','dingdanListResult','clearAllActions'
+      'clearAllActions'
     ]),
     newGoods(){
       this.clearAllActions()

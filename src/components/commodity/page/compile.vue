@@ -11,19 +11,6 @@
         <span style="margin-left: 10px">{{ scope.row.date }}</span>
       </template>
     </el-table-column>
-    <!--<el-table-column
-      label="商品名称"
-      width="180">
-      <template slot-scope="scope">
-        <el-popover trigger="hover" placement="top">
-          <p>姓名: {{ scope.row.name }}</p>
-          <p>住址: {{ scope.row.address }}</p>
-          <div slot="reference" class="name-wrapper">
-            <el-tag size="medium">{{ scope.row.address }}</el-tag>
-          </div>
-        </el-popover>
-      </template>
-    </el-table-column>-->
     <el-table-column
       label="商品名称"
       width="256">

@@ -116,7 +116,8 @@ export default {
   },
   methods: {
     ...mapActions([
-         'getAllTreeActions', 'pushClassTreeActions','fenleiResultActions','deleteClassTreeActions','getProductSpecDetailsActions','getProductSpecsActions'
+         'getAllTreeActions', 'pushClassTreeActions','fenleiResultActions','deleteClassTreeActions','getProductSpecDetailsActions','getProductSpecsActions','getParamsByCategoryIdActions',
+      'createFenLeiMoActions'
     ]),
     handleEdit(index, row) {
       let data={
@@ -148,7 +149,12 @@ export default {
       console.log(`当前页: ${val}`);
     },
     newPush (index, row) {
-      console.log(row)
+      let data={
+        categoryId:row.id,
+        name:'促销'
+      }
+      //this.createFenLeiMoActions(data)
+      this.getParamsByCategoryIdActions(row.id)
     },
     oneManage (index, row) {
       console.log(row)

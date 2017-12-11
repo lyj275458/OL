@@ -42,6 +42,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
   export default {
     name: 'seachlist',
     data () {
@@ -89,24 +91,18 @@
           address: '【意大利袋鼠】【下单即送棉袜】4条装男士内裤男 莫代尔平角裤 中腰透气礼盒装',
           status:'编辑中',
           type:"新增"
-        },/* {
-          id: '65432345',
-          name: '【意大利袋鼠】【下单即送棉袜】4条装男士内裤男 莫代尔平角裤 中腰透气礼盒装',
-          resource:'有',
-          temprice:'99',
-          ownprice:'110',
-          pingjia:'暂无评价',
-          save:'777',
-          sales:'12',
-          ranking:'4',
-          salestatus:'销售中',
-          address: '【意大利袋鼠】【下单即送棉袜】4条装男士内裤男 莫代尔平角裤 中腰透气礼盒装',
-          status:'编辑中',
-          type:"新增"
-        }*/]
+        }]
       }
     },
+    computed:{
+      ...mapGetters([
+
+      ])
+    },
     methods:{
+      ...mapActions([
+
+      ]),
       handleEdit(index, row) {
         console.log(index, row);
       }

@@ -50,7 +50,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-      'alertnum','loginResult','dingdanListResult'
+
     ])
   },
   components:{
@@ -58,7 +58,7 @@ export default {
   },
   methods:{
     ...mapActions([
-      'getTagByIdActions','deleteTagActions','pushNewTagActions','getAllTagActions','getCategoryBrandsActions'
+     
     ]),
   	 handleSelect(key, keyPath) {
       this.index=key

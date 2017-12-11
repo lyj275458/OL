@@ -72,7 +72,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-      'alertnum','loginResult','pickerOptions2'
+      'pickerOptions2'
     ])
   },
   methods:{

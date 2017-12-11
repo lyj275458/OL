@@ -189,7 +189,7 @@
     },
     methods:{
       ...mapActions([
-        'getcityListActions','getxianActions'
+        'getcityListActions','getxianActions','alertshow'
       ]),
       getallS(item){
        this.$store.state.result.trueOrfalse=false
@@ -203,10 +203,8 @@
         this.xianList='请选择县级'
         this.getxianActions(it)
       },
-
-
       onSubmit() {
-        console.log('submit!');
+        this.alertshow()
       },
       handleAvatarSuccess(res, file) {
         this.imageUrl = URL.createObjectURL(file.raw);

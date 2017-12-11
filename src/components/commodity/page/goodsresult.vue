@@ -305,10 +305,13 @@ export default {
     },
   computed:{
     ...mapGetters([
-      'alertnum','loginResult','pickerOptions2'
+      'pickerOptions2'
     ])
   },
   methods: {
+    ...mapActions([
+
+    ]),
     formatter(row, column) {
       return row.address;
     },

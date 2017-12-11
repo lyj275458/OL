@@ -201,37 +201,15 @@
     },
     computed:{
       ...mapGetters([
-        'popoverAlive'
+
       ])
     },
     methods:{
       ...mapActions([
-        'popoverAlert'
+
       ]),
       getallS(t){
-     /*this.$http.get('http://jisuarea.market.alicloudapi.com/area/all',{}).then(res => {
-       console.log(res)
-     })*/
-    /* let that=this
-        $.ajax({
-          type:'get',
-          dataType:"json",
-          url:'http://jisuarea.market.alicloudapi.com/area/all',
-          beforeSend:function(request){
-            request.setRequestHeader("Authorization", "APPCODE " + "98ced78ffa3d462ea4c73e5680153794");
-          },
-          success:function (data) {
-            let arr=data.result.splice(0,34)
-            console.log(data)
-            that.options=arr
-            console.log(this.options)
 
-          }
-        })*/
-      },
-      alertMe(){
-        this.popoverAlert('vBalance')
-        console.log(this.popoverAlive)
       },
       handleEdit(index, row) {
         console.log(index, row);
