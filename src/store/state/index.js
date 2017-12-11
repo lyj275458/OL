@@ -543,7 +543,16 @@ const result = { //接收请求后的数据
   },
   //时间选择器快捷键
   pickerOptions2: {
-    shortcuts: [{
+    shortcuts: [
+      {
+        text: '一天前',
+        onClick(picker) {
+          const end = new Date();
+          const start = new Date();
+          start.setTime(start.getTime() - 3600 * 1000 * 24);
+          picker.$emit('pick', [start, end]);
+        }
+      }, {
       text: '最近一周',
       onClick(picker) {
         const end = new Date();

@@ -65,7 +65,7 @@
           </el-option>
         </el-select>
       </p>
-      <p><el-button type="primary" size="small">查询</el-button> <el-button type="info" size="small">批量导出</el-button></p>
+      <p><el-button type="primary" size="small" @click="seachList()">查询</el-button> <el-button type="info" size="small">批量导出</el-button></p>
     </div>
     <div class="line"></div>
     <p><i></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span></p>
@@ -278,16 +278,17 @@
     },
     computed:{
       ...mapGetters([
-        'popoverAlive','pickerOptions2'
+        'pickerOptions2'
       ])
     },
     methods:{
       ...mapActions([
-        'popoverAlert'
+
       ]),
-      alertMe(){
-        this.popoverAlert('vBalance')
-        console.log(this.popoverAlive)
+      seachList(){
+        let start=new Date().setTime(new Date().getTime() - 3600 * 1000 * 24);
+       this.value4=[start,new Date()]
+       console.log(this.value4)
       },
       handleEdit(index, row) {
         console.log(index, row);
