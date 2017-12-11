@@ -507,11 +507,6 @@ const actions = {
     }).then(res => {
       context.commit('GET_XIANJI_LIST',res)
     }).catch(err => {
-      /*Message({
-        showClose: true,
-        message:'请求失败',
-        type:'error'
-      });*/
       context.state.result.trueOrfalse=true
     })
   },

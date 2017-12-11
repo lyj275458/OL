@@ -1,5 +1,5 @@
 <template>
-  <div id="data">
+  <div id="dataFp">
     <p id="toindex"><router-link to="index">首页</router-link> &gt; 发票管理</p>
     <div class="ev-header">
       <el-alert
@@ -193,6 +193,8 @@
       ]),
       getallS(item){
        this.$store.state.result.trueOrfalse=false
+       this.$store.state.result.xianjiList=[]
+       this.$store.state.result.smallCityList=[]
         this.smallItems='请选择城市',
         this.xianList='请选择县级'
         this.getcityListActions(item)
@@ -226,8 +228,8 @@
   }
 </script>
 
-<style scoped>
-  #data #toindex{
+<style>
+  #dataFp #toindex{
     font: 16px/36px "微软雅黑";
     background:none;
     border:0;
@@ -236,50 +238,50 @@
     font-weight: 550;
     text-indent:0;
   }
-  .ev-header{
+  #dataFp .ev-header{
     font:12px/26px "微软雅黑";text-indent:5px ;
     margin:10px 0 0 0;
   }
-  .ev-content{
+  #dataFp .ev-content{
     padding:24px 8px;
     background: #fafafa;
   }
-  #data>p{
+  #dataFp>p{
     font: 16px/36px "微软雅黑";margin-top:15px ;
   }
-  #data>p span{
+  #dataFp>p span{
     font-size: 12px;margin-left:15px ;
   }
-  #data>p span i{
+  #dataFp>p span i{
     color: red;margin: 0 5px;
   }
-  #data>p>i {
+  #dataFp>p>i {
     border: 2px solid red;
     font-size: 12px;
     margin-right: 8px;
     height: 16px;
   }
-  .chalist{
+  #dataFp .chalist{
     background: #fafafa;
     padding:20px 0;
   }
-  footer .el-button{
+  #dataFp footer .el-button{
     margin:30px 215px;
     margin-right: 20px;
     width:100px;
   }
-  footer .el-button:last-child{
+  #dataFp footer .el-button:last-child{
     margin:0;
   }
   /*上传*/
-  .ev-content .avatar-uploader {
+  #dataFp .ev-content .avatar-uploader {
     border-color: #409EFF;
     display: inline-block;
     margin-right: 15px;
     font-size:12px;
     color: #666666;
   }
-  .avatar {
+  #dataFp .avatar {
     border: 1px solid #d9d9d9;
     background: #fbfdff;
     font-size: 28px;
@@ -288,5 +290,8 @@
     height: 118px;
     line-height: 118px;
     text-align: center;
+  }
+  #dataFp label.el-form-item__label{
+    font-size: 12px;
   }
 </style>
