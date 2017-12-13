@@ -14,7 +14,7 @@ Vue.prototype.$echarts = echarts
 Vue.prototype.$http = axios
 Vue.use(ElementUI)
 //Vue.use(vueResource)
-//Vue.config.silent = true  取消vue所有日志和警告
+//Vue.config.silent = true  //取消vue所有日志和警告
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

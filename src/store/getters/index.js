@@ -2,7 +2,7 @@
  * Created by Yan on 17/11/9.
  */
 
- import Vue from 'vue'
+ //import Vue from 'vue'
 
  const getters = {//返回state内的数据进行模板使用
    //弹框属性输出

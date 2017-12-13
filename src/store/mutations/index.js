@@ -2,7 +2,7 @@
  * Created by Yan on 17/11/09.
  */
 import * as types from '../fetch/type';
-import Vue from 'vue'
+//import Vue from 'vue'
 
 const mutations = {//mutations内是改变state内的值得作用
   //弹框显示隐藏

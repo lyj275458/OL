@@ -9,6 +9,7 @@ import FreightTemplate from '@/components/DeliveryManagement/subassembly/Freight
 import SaleAfter from '@/components/afterSalesService/subassembly/saleAfter.vue'
 import SaleAfterQuality from '@/components/afterSalesService/subassembly/saleAfterQuality.vue'
 import SaleAfterSet from '@/components/afterSalesService/subassembly/saleAfterSet.vue'
+import SaleAfterSet1 from '@/components/afterSalesService/subassembly/saleAfterSet.vue'
 import WOmanagement from '@/components/afterSalesService/subassembly/WOmanagement.vue'
 //模块3
 import Pullnew from '@/components/commodity/subassembly/pullnew.vue'
@@ -40,13 +41,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: '',
       component: Home,
       children:[
           {
             path: '/',
-            name:"SaleAfterSet",
-            component:SaleAfterSet
+            name:"SaleAfterSet1",
+            component:SaleAfterSet1
           },
           {
             path: '1-1',

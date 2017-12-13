@@ -56,8 +56,6 @@
         </el-form-item>
         <el-form-item label="主导规格">
           <p class="leadIndex">
-            <!--<el-radio v-model="updata1" label=1>是</el-radio>
-            <el-radio v-model="updata1" label=0>否</el-radio>-->
             <el-radio-group v-model="updata1">
               <el-radio :label="1">是</el-radio>
               <el-radio :label="0">否</el-radio>
@@ -143,7 +141,16 @@ export default {
   computed:{
     ...mapGetters([
       'FlDataResult','getProductSpecsResult','smallguigeResult'
-    ])
+    ]),
+    /*updata11:{
+      get: function (){
+        return this.smallguigeResult.leading;
+      },
+      set: function (newValue){
+        this.updata1=newValue
+      }
+
+    }*/
   },
   activated(){
       this.name='';

@@ -6,10 +6,10 @@ import axios from 'axios'
 import qs from 'qs';
 import * as types from '../fetch/type';
 import { Message } from 'element-ui';
-import { Loading } from 'element-ui';
+//import { Loading } from 'element-ui';
 import api from '../fetch/api'
 
-const actions = {
+const actions = {//actions,mutations内的方法只能有两个参数，一个是context一个是外部调用时传参，event事件对象参数除外
   //弹框修改属性
   popoverAlert(context,where,event){
     context.commit('changeAlert',where)
@@ -95,8 +95,8 @@ const actions = {
       params: context.state.editor[funUrl[2]]
     })
       .then(function(res){
+        context.commit('changeloading')
         if(res.data.ok){
-          context.commit('changeloading')
           if(res.data.result){
             if(funUrl[1] != ''){
               context.commit(types[funUrl[1]],res)
@@ -345,7 +345,6 @@ const actions = {
         });
       }
     )
-   // context.dispatch('deleteFormPost',['/product/category/spec/updateProductCategorySpecDetail','','updateProductMM'])
   },
   //删除分类下的一个商品规格模板
   deleteProductActions(context,id){

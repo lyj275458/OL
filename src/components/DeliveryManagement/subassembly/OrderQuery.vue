@@ -9,8 +9,8 @@
           <el-button type="primary" size="small" plain>已发货未签收(41)</el-button>
         </p>
       <div class="ev-content-seach">
-        <p><label>订单编号：</label><el-input v-model="input" placeholder="请输入内容" size="small"></el-input></p>
-        <p><label>商品ID：</label><el-input v-model="input1" placeholder="请输入内容" size="small"></el-input></p>
+        <p><label>订单编号：</label><el-input v-model="numResult" placeholder="请输入内容" size="small"></el-input></p>
+        <p><label>商品ID：</label><el-input v-model="ROOTResult" placeholder="请输入内容" size="small"></el-input></p>
         <p><label>收货手机：</label><el-input v-model="input2" placeholder="请输入内容" size="small"></el-input></p>
         <p><label>快递单号：</label><el-input v-model="input3" placeholder="请输入内容" size="small"></el-input></p>
         <p><label>订单状态：</label> <el-select v-model="value" placeholder="请选择" size="small">
@@ -64,7 +64,7 @@
             align="right">
           </el-date-picker>
         </p>
-        <p><el-button type="primary" size="small" @click="seachGoods()">查询</el-button> <el-button type="info" size="small">批量导出</el-button> <el-button type="success" size="small">查看已生成报表</el-button></p>
+        <p><el-button type="primary" size="small" @click="seachGoods()">查询</el-button> <el-button type="info" size="small" @click="pullout()">批量导出</el-button> <el-button type="success" size="small" @click="check()">查看已生成报表</el-button></p>
       </div>
     </div>
     <div class="line"></div>
@@ -272,7 +272,7 @@
     },
     computed:{
       ...mapGetters([
-        'pickerOptions2','value4Result'
+        'pickerOptions2','value4Result','numResult','ROOTResult'
       ])
     },
     watch:{
@@ -282,8 +282,11 @@
     },
     methods: {
       ...mapActions([
-        'timerResultActions'
+        'timerResultActions','changeActions','heheActions','clearActions'
       ]),
+      pullout(){
+        this.changeActions()
+      },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
       },
@@ -295,7 +298,11 @@
       },
       seachGoods(){
         //this.$store.dispatch('alertshow')
-        this.input='nihao'
+        //this.input='nihao'
+        this.heheActions('xuyao')
+      },
+      check(){
+        this.clearActions()
       }
     }
   }

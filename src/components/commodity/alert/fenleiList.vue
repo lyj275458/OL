@@ -177,9 +177,9 @@ export default {
   .seach-list{
     margin-top: 20px;
   }
-  .el-table th>div.cell,.el-table .cell,.el-table{
+  /*.el-table th>div.cell,.el-table .cell,.el-table{
     font-size: 12px;
-  }
+  }*/
   .el-button--mini, .el-button--mini.is-round{
     margin:0;
     padding:5px;font-size: 12px;
