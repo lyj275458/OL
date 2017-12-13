@@ -20,12 +20,12 @@
           :value="item.value">
         </el-option>
       </el-select>
-      <el-button type="primary" round size="mini" @click="seach()">搜索</el-button>
+      <el-button type="primary"  size="mini" @click="seach()">搜索</el-button>
     </div>
     <div class="seach-list">
       <p><i></i>异常数据<span>共查询到<i>{{tableData.length}}</i>条数据</span><el-button type="primary" size="mini" plain @click="pullOut()">导出</el-button></p>
       <el-table
-        :data="tableData"
+        :data="loginResult"
         style="width: 100%">
         <el-table-column
           label="订单号"
@@ -165,7 +165,7 @@
     },
     computed:{
       ...mapGetters([
-
+        'loginResult'
       ])
     },
     created(){
@@ -189,10 +189,11 @@
       },
       //导出方法
       export2Excel() {
+        let arr=Object.keys(this.tableData[0])
         require.ensure([], () => {
           const { export_json_to_excel } = require('@/vendor/Export2Excel');
-          const tHeader = ['1', '2', '3', '4', '5'];
-          const filterVal = ['id', 'ownprice', 'pingjia', 'name', 'salestatus'];
+          const tHeader = ['name', 'resource', 'temprice', 'ranking', 'save','save','ranking'];
+          const filterVal =['name', 'resource', 'temprice', 'ranking', 'save','save','ranking'];
           const list = this.tableData;
           const data = this.formatJson(filterVal,list);
           export_json_to_excel(tHeader, data, '列表excel');
@@ -255,5 +256,8 @@
     float: right;
     width:100px;
     margin-top: 5px;
+  }
+  .logo-list > .el-button--mini{
+    width:100px;
   }
 </style>

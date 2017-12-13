@@ -371,7 +371,7 @@ export default {
    color:red;font-weight: 600;
   }
  .el-date-editor--daterange.el-input__inner{
-    width:250px;
+    width:350px;
     float: right;
   }
 .datashow{

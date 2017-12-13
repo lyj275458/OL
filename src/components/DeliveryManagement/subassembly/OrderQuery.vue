@@ -45,17 +45,17 @@
             :value="item.value">
           </el-option>
         </el-select></p>
-        <p><label>成团时间：</label><el-select v-model="value4" placeholder="请选择" size="small">
+        <p><label>成团时间：</label><el-select v-model="value4" size="small" @change="timerResultActions(value4)">
           <el-option
             v-for="item in options4"
             :key="item.value"
             :label="item.label"
-            :value="item.value">
+            :value="item.label">
           </el-option>
         </el-select>
           <el-date-picker
             size="small"
-            v-model="value5"
+            v-model="value4Result"
             type="datetimerange"
             :picker-options="pickerOptions2"
             range-separator="至"
@@ -128,10 +128,10 @@
           label="订单其他信息"
           width="246">
           <template slot-scope="scope">
-            <span style="margin-left: 10px">订单编号: 171121-291227939842962</span><br>
-            <span style="margin-left: 10px">成团时间: 2017-11-22 01:55</span><br>
-            <span style="margin-left: 10px">承诺发货时间: 2017-11-24 01:55</span><br>
-            <span style="margin-left: 10px">收件人: 沈烈军</span>
+            <span>订单编号: <i style="color: #ff4624;">171121-291227939842962</i></span><br>
+            <span>成团时间: <i style="color: #ff4624;">2017-11-22 01:55</i></span><br>
+            <span>承诺发货时间: <i style="color: #ff4624;">2017-11-24 01:55</i></span><br>
+            <span>收件人: <i style="color: #ff4624;">沈烈军</i></span>
           </template>
         </el-table-column>
         <el-table-column label="操作">
@@ -236,35 +236,7 @@
         value4: '快速选择时间',
         value5: '',
         currentPage4:1,
-        tableData: [{
-          id: '1234567',
-          name: '【意大利袋鼠100%纯棉正品 】 男士保暖内衣纯棉基础款 秋衣秋裤套装圆领薄款全棉打底',
-          resource:'无',
-          temprice:'99',
-          ownprice:'110',
-          pingjia:'暂无评价',
-          save:'777',
-          sales:'12',
-          ranking:'4',
-          salestatus:'销售中',
-          address: '【意大利袋鼠100%纯棉正品 】 男士保暖内衣纯棉基础款 秋衣秋裤套装圆领薄款全棉打底',
-          status:'编辑中',
-          type:"修改"
-        }, {
-          id: '1234567',
-          name: '王小虎',
-          resource:'有',
-          temprice:'99',
-          ownprice:'110',
-          pingjia:'暂无评价',
-          save:'777',
-          sales:'12',
-          ranking:'4',
-          salestatus:'销售中',
-          address: '【意大利袋鼠】【2017年最新款亏本推荐】4条装男士内裤男 纯棉印花平角裤 中腰透气礼盒装',
-          status:'编辑中',
-          type:"修改"
-        }, {
+        tableData: [ {
           id: '234565',
           name: '【意大利袋鼠】【下单即送棉袜】4条装男士内裤男 莫代尔平角裤 中腰透气礼盒装',
           resource:'无',
@@ -300,7 +272,7 @@
     },
     computed:{
       ...mapGetters([
-        'popoverAlive','pickerOptions2'
+        'pickerOptions2','value4Result'
       ])
     },
     watch:{
@@ -310,7 +282,7 @@
     },
     methods: {
       ...mapActions([
-        'popoverAlert'
+        'timerResultActions'
       ]),
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);

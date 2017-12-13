@@ -78,6 +78,8 @@ export const GET_PARAMS_BY_CATEGORYID = 'GET_PARAMS_BY_CATEGORYID';
 export const GET_SMALL_CITYLIST = 'GET_SMALL_CITYLIST';
 //县级列表
 export const GET_XIANJI_LIST = 'GET_XIANJI_LIST';
+//时间选择接受
+export const GET_VALUE_4 = 'GET_VALUE_4';
 
 
 

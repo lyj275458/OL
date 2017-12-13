@@ -89,6 +89,10 @@
    loading: state => {
      return state.result.loading
    },
+   //时间选择
+   value4Result: state => {
+     return state.result.value4Result
+   },
 
     alertnum: state => {
       return state.editor.num

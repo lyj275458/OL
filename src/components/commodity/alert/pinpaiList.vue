@@ -37,8 +37,7 @@
       </el-table-column>
       <el-table-column
         label="状态"
-        width="100"
-        show-overflow-tooltip>
+        width="100">
         <template slot-scope="scope">
           <span style="margin-left: 10px" v-if="scope.row.status=='1'">正常</span>
           <span style="margin-left: 10px" v-if="scope.row.status=='0'">废弃</span>

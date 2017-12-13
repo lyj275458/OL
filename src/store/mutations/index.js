@@ -379,6 +379,10 @@ const mutations = {//mutations内是改变state内的值得作用
   [types.GET_XIANJI_LIST](state,res){
     state.result.xianjiList=res.data.result
   },
+  //时间选择接受
+  [types.GET_VALUE_4] (state,res) {
+    state.result.value4Result=res
+  },
 
 
 

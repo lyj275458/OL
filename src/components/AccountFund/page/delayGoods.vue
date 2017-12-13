@@ -5,17 +5,17 @@
      <label>订单编号：</label><el-input placeholder="请输入商品ID" size="small"></el-input>
      <label>商品ID：</label><el-input placeholder="" size="small"></el-input>
       <br>
-     <label>扣款时间：</label><el-select v-model="value" size="small">
+     <label>扣款时间：</label><el-select v-model="value" size="small" @change="changeTime()">
        <el-option
          v-for="item in options"
          :key="item.value"
          :label="item.label"
-         :value="item.value">
+         :value="item.label">
        </el-option>
      </el-select>
       <el-date-picker
         size="small"
-        v-model="value4"
+        v-model="value4Result"
         type="datetimerange"
         :picker-options="pickerOptions2"
         range-separator="至"
@@ -158,13 +158,16 @@
     },
     computed:{
       ...mapGetters([
-        'popoverAlive','pickerOptions2'
+        'value4Result','pickerOptions2'
       ])
     },
     methods:{
       ...mapActions([
-        'popoverAlert'
+        'timerResultActions'
       ]),
+      changeTime(){
+        this.timerResultActions(this.value)
+      },
       alertMe(){
         this.popoverAlert('vBalance')
         console.log(this.popoverAlive)

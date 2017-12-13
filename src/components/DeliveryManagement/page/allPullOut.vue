@@ -1,5 +1,5 @@
 <template>
-  <div id="smalltitle">
+  <div id="smallAll">
     <div class="ev-header">
       <p><i class="el-icon-warning"></i>虚假发货严重的可能会被处以店铺二级惩罚（商品移除资源位，移除广告，禁止上新，禁止上架）;
        <span>1.导入单号24小时内可修改，填错单号可能会被判虚拟发货。</span>
@@ -48,38 +48,38 @@
 
       ]),
       handleClick(tab, event) {
-        console.log(tab, event);
+        //console.log(tab, event);
       }
 
     }
   }
 </script>
 
-<style scoped>
-  #smalltitle{
-    width:1052px;
-  }
-  #smalltitle .el-button+.el-button{
+<style>
+  #smallAll .el-button+.el-button{
     margin:0;
   }
-  #smalltitle .logo-list{
+  #smallAll .logo-list{
     font-size:14px;
     margin-top:16px;
     position: relative;
   }
-  .ev-header p{
+  #smallAll .ev-header p{
     background: #fff7dd;
     font:12px/26px "微软雅黑";text-indent:5px ;
     border: 1px solid #f5e19f;
     margin:15px 0 4px 0;
     color:#333;
   }
-  .ev-header p span{
+  #smallAll .ev-header p span{
     display: block;
     margin-left:20px;
   }
-  .el-icon-warning{
+  #smallAll .el-icon-warning{
     color:#ffa901;
     margin-right:5px;
+  }
+  ul.el-menu--horizontal>.el-menu-item.is-active{
+    color: #409EFF;
   }
 </style>

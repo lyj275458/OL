@@ -545,6 +545,13 @@ const result = { //接收请求后的数据
   pickerOptions2: {
     shortcuts: [
       {
+        text: '今天',
+        onClick(picker) {
+          const end = new Date();
+          const start = new Date();
+          picker.$emit('pick',[start, end]);
+        }
+      }, {
         text: '一天前',
         onClick(picker) {
           const end = new Date();
@@ -578,6 +585,8 @@ const result = { //接收请求后的数据
       }
     }]
   },
+  //接受时间
+  value4Result:'',
   //大规格编辑
   smallguige:'',
   //小规格编辑
@@ -585,7 +594,7 @@ const result = { //接收请求后的数据
   //loading
   loading:false,
 
-  loginResult:"",
+  loginResult:[],
   dingdanListResult:[]
 }
 

@@ -11,7 +11,7 @@
         :value="item.value">
       </el-option>
     </el-select></p>
-    <el-button type="primary" size="small" style="width: 100px;margin-top: 30px;">确认导入</el-button>
+    <el-button type="primary" size="small" style="width: 100px;margin: 30px 0 0 25px;" plain>确认导入</el-button>
   </div>
     <div class="seachList">
       <p><i></i>导入记录</p>

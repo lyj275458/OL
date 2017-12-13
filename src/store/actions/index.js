@@ -434,7 +434,6 @@ const actions = {
         });
       }
     )
-    //context.dispatch('deleteFormPost',['/product/category/spec/addProductCategorySpecDetail','','addProductSpecDetailMM'])
   },
   //编辑一个规格的能编辑的基本信息
   updateCategorySpecActions (context,data) {
@@ -506,6 +505,30 @@ const actions = {
     }).catch(err => {
       context.state.result.trueOrfalse=true
     })
+  },
+  //时间选择接受
+  timerResultActions (context,data) {
+    let start=new Date()
+    if(data=='最近24小时内'){
+      let time=[new Date().setTime(new Date().getTime() - 3600 * 1000 * 24),start]
+      context.commit('GET_VALUE_4',time)
+    }
+    if(data=='最近7天内'){
+      let time=[new Date().setTime(new Date().getTime() - 3600 * 1000 * 24 * 7),start]
+      context.commit('GET_VALUE_4',time)
+    }
+    if(data=='最近一个月' || data=='最近30天内'){
+      let time=[new Date().setTime(new Date().getTime() - 3600 * 1000 * 24 * 30),start]
+      context.commit('GET_VALUE_4',time)
+    }
+    if(data=='最近两个月'){
+      let time=[new Date().setTime(new Date().getTime() - 3600 * 1000 * 24 * 60),start]
+      context.commit('GET_VALUE_4',time)
+    }
+    if(data=='最近三个月' || data=='三个月前'){
+      let time=[new Date().setTime(new Date().getTime() - 3600 * 1000 * 24 * 90),start]
+      context.commit('GET_VALUE_4',time)
+    }
   },
 
 

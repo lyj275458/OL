@@ -5,12 +5,10 @@ export function fetch(url, params) {
   return new Promise((resolve, reject) => {
     axios.post(url, params)
       .then(response => {
-        // console.log('Api--ok');
-        // console.log(response)
         resolve(response.data);
       })
       .catch((error) => {
-        // console.log(error)
+        console.log(error)
         reject(error)
       })
   }).catch((error) => {

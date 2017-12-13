@@ -48,7 +48,7 @@
       </el-select></p>
       <p><label>申请时间：</label><el-date-picker
         size="small"
-        v-model="value4"
+        v-model="value4Result"
         type="datetimerange"
         :picker-options="pickerOptions2"
         range-separator="至"
@@ -56,12 +56,12 @@
         end-placeholder="结束日期"
         align="right">
       </el-date-picker>
-        <el-select v-model="value_month" size="small">
+        <el-select v-model="value_month" size="small"  @change="changeTime()">
           <el-option
             v-for="item in options3"
             :key="item.value"
             :label="item.label"
-            :value="item.value">
+            :value="item.label">
           </el-option>
         </el-select>
       </p>
@@ -210,7 +210,6 @@
           label: '三个月前'
         }],
         value_month:'最近一个月',
-        value4: '',
         num:"10",
         value:"全部",
         tableData: [{
@@ -278,13 +277,16 @@
     },
     computed:{
       ...mapGetters([
-        'pickerOptions2'
+        'pickerOptions2','value4Result'
       ])
     },
     methods:{
       ...mapActions([
-
+        'timerResultActions'
       ]),
+      changeTime(){
+       this.timerResultActions(this.value_month)
+      },
       seachList(){
         let start=new Date().setTime(new Date().getTime() - 3600 * 1000 * 24);
        this.value4=[start,new Date()]

@@ -10,32 +10,26 @@
         :value="item.value">
       </el-option>
     </el-select><br>
-      <label>创建时间：</label><el-select v-model="value1" size="small">
+      <label>创建时间：</label><el-select v-model="value1" size="small" @change="changeTime()">
       <el-option
         v-for="item in options1"
         :key="item.value"
         :label="item.label"
-        :value="item.value">
+        :value="item.label">
       </el-option>
     </el-select>
       <el-date-picker
         size="small"
-        v-model="value2"
-        type="datetime"
-        placeholder="选择日期时间"
-        align="right"
-        :picker-options="pickerOptions1">
-      </el-date-picker>
-      <el-date-picker
-        size="small"
-        v-model="value3"
-        type="datetime"
-        placeholder="选择日期时间"
-        align="right"
-        :picker-options="pickerOptions2">
+        v-model="value4Result"
+        type="datetimerange"
+        :picker-options="pickerOptions2"
+        range-separator="至"
+        start-placeholder="开始日期"
+        end-placeholder="结束日期"
+        align="right">
       </el-date-picker>
       <br>
-      <el-button type="primary" round size="mini" @click="alertMe()">查询</el-button>
+      <el-button type="primary" round size="mini" @click="seachMe()">查询</el-button>
     </div>
     <div class="line"></div>
     <p><i></i>查询结果<span>共查询到<i>{{tableData.length}}</i>条数据</span></p>
@@ -171,50 +165,6 @@
         value1:"最近7天内",
         value2:"",
         value3:"",
-        pickerOptions1: {
-          shortcuts: [{
-            text: '今天',
-            onClick(picker) {
-              picker.$emit('pick', new Date());
-            }
-          }, {
-            text: '昨天',
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit('pick', date);
-            }
-          }, {
-            text: '一周前',
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', date);
-            }
-          }]
-        },
-        pickerOptions2: {
-          shortcuts: [{
-            text: '今天',
-            onClick(picker) {
-              picker.$emit('pick', new Date());
-            }
-          }, {
-            text: '昨天',
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit('pick', date);
-            }
-          }, {
-            text: '一周前',
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', date);
-            }
-          }]
-        },
         tableData: [{
           id: '1234567',
           name: '【意大利袋鼠100%纯棉正品 】 男士保暖内衣纯棉基础款 秋衣秋裤套装圆领薄款全棉打底',
@@ -280,57 +230,30 @@
     },
     computed:{
       ...mapGetters([
-        'popoverAlive'
+        'value4Result','pickerOptions2'
       ])
     },
     methods:{
       ...mapActions([
-        'popoverAlert'
+        'timerResultActions'
       ]),
-      alertMe(){
-        this.popoverAlert('vBalance')
-        console.log(this.popoverAlive)
+      changeTime(){
+        this.timerResultActions(this.value1)
       },
       handleEdit(index, row) {
         console.log(index, row);
       },
-      allhandleEdit(){
-
-      },
-      allDelete(){
+      seachMe(){
 
       },
       handleDelete(index, row) {
         console.log(index, row);
-      },
-      turnpage(key,title){
-        if(key){
-          this.index=key
-        }
-        if(title){
-          this.tittle=title
-        }
-      },
-      toggleSelection(rows) {
-        if (rows) {
-          rows.forEach(row => {
-            this.$refs.multipleTable.toggleRowSelection(row);
-          });
-        } else {
-          this.$refs.multipleTable.clearSelection();
-        }
-      },
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
       },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
       },
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
-      },
-      open() {
-        this.$message.error('请输入商品ID');
       }
     }
   }
