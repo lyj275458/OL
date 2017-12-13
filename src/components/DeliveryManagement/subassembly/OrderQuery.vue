@@ -272,13 +272,13 @@
     },
     computed:{
       ...mapGetters([
-        'pickerOptions2','value4Result','numResult','ROOTResult'
+        'pickerOptions2','value4Result','numResult','ROOTResult','loginResult'
       ])
     },
     watch:{
       input:function(val,old){
         console.log(val,old)
-  }
+         }
     },
     methods: {
       ...mapActions([

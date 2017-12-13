@@ -182,7 +182,6 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   //删除品牌
   deletePpActions (context,id) {
     context.commit('SET_DELETE_PPRESULT',id)
-    //context.dispatch('deleteFormPost',['/product/brand/delete','GET_DELETE_PPRESULT','deletePpMM'])
     api.deletePpApi('/apis/product/brand/delete',qs.stringify(context.state.editor.deletePpMM)).then(res => {
       if(res.ok){
         context.dispatch('mSuccess')
@@ -364,7 +363,6 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
         type: 'warning'
       });
     })
-    //context.dispatch('deleteFormPost',['/product/category/spec/deleteProductCategorySpec','','deleteProductMM'])
   },
   //删除大规格模板下的一个小规格
   deleteSpecDetailActions(context,id){
@@ -386,7 +384,6 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
         });
       }
     )
-    //context.dispatch('deleteFormPost',['/product/category/spec/deleteProductCategorySpecDetail','','deleteProductMM'])
   },
   // 在分类下挂一个规格模板
   addProductSpecActions (context,data) {
@@ -411,7 +408,6 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
         });
       }
     )
-    //context.dispatch('deleteFormPost',['/product/category/spec/addProductCategorySpec','','addProductSpecMM'])
   },
   //在分类下的一个大规格下添加一个小规格
   addProductSpecDetailActions (context,data) {

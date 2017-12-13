@@ -11,7 +11,7 @@
       end-placeholder="结束日期"
       :picker-options="pickerOptions2">
     </el-date-picker></p>
-      <div class="datashow">
+    <div class="datashow">
           <ul>
             <li v-for="(same,index) in arr">
               <p>{{same.name}}
@@ -29,9 +29,9 @@
               </p>
             </li>
           </ul>
-      </div>
-      <p><i class="el-icon-d-arrow-right"></i>商品效果明细
-      <div class="goodsDetail">
+    </div>
+    <p><i class="el-icon-d-arrow-right"></i>商品效果明细</p>
+    <div class="goodsDetail">
        <p> <label>日期：</label>
         <el-date-picker
           size="small"

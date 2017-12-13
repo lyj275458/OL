@@ -18,7 +18,6 @@
         <span style="margin-left: 10px">{{ scope.row.address }}</span>
       </template>
     </el-table-column>
-
     <el-table-column
       label="状态"
       width="180">
@@ -40,7 +39,6 @@
         <span style="margin-left: 10px">{{ scope.row.date }}</span>
       </template>
     </el-table-column>
-
     <el-table-column label="操作">
       <template slot-scope="scope">
         <el-button
