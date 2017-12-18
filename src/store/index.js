@@ -1,24 +1,31 @@
-/**
- * Created by Yan on 17/11/09.
- */
-import Vue from 'vue'
-import Vuex from 'vuex'
-import state from './state'
-import mutations from './mutations'
-import actions from './actions'
-import getters from './getters'
-import servers from './modules/servers'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import appShell from './app-shell';
+Vue.use(Vuex);
+//全局的为维护老页面，新的全部用appShell命名空间下的
+export default new Vuex.Store({
+	state:{
+	  ajaxObj:{},
+	  documentTitle:'',
+	  applyObj:{},
+	},
+	mutations: {		
+		//通用标题设置 
+		documentTitle(state,val){
+			state.documentTitle = val;
+		},
+		//控制全局loading
+		ajaxObj (state, obj) {
+			console.log(obj)
+	    	state.ajaxObj = obj;
+	    },
+		applyObj(state,val){
+			state.applyObj = val;
+		},
+	},
+	//
+    modules: {
+        appShell
+    }
+});
 
-Vue.use(Vuex)
-const store = new Vuex.Store({
-  namespaced: true,//命名空间模块
-  state,
-  mutations,
-  actions,
-  getters,
-  modules: {
-    servers : servers,
-  }
-})
-
-export default store

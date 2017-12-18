@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><title></title><meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><script>(function(doc,win){var docEl=doc.documentElement,resizeEvt="orientationchange" in window?"orientationchange":"resize",recalc=function(){var clientWidth=docEl.clientWidth;if(!clientWidth){return}if(clientWidth>=750){docEl.style.fontSize="100px"}else{docEl.style.fontSize=100*(clientWidth/750)+"px"}};if(!doc.addEventListener){return}win.addEventListener(resizeEvt,recalc,false);doc.addEventListener("DOMContentLoaded",recalc,false)})(document,window);</script><script type=text/javascript>function getUserTicket(ticket){              
+                var exp = new Date();
+                exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期  
+                document.cookie = 'ticket' + "=" + ticket + ";expires=" + exp.toGMTString() + ";path=/";
+            };
+            var curHost = window.location.host;
+           	var API_HOST='';
+           	var CUR_URLBACK='';
+           	//API_HOST='https://apiwap.youxms.com/';//线上地址
+           	//CUR_URLBACK='https://wap.youxms.com/';
+            //API_HOST='http://api.test.youxms.com/';//测试地址
+            //CUR_URLBACK='http://wap.test.youxms.com/'//测试回调地址
+           
+
+            var version = 0;   //0:测试环境 1：正式环境
+
+            if (version == 0) {
+                API_HOST="http://test-mobile.olquan.cn:80/";//测试地址
+                CUR_URLBACK='http://ol-h5.olquan.cn/';//测试回调地址
+            }
+            else if (version == 1) {
+                API_HOST="http://ol-site.olquan.com/";//线上地址
+                CUR_URLBACK='http://ol-h5-preview.olquan.cn/';//线上回调地址
+               // URL_HOST="http://ol-site.olquan.com/"//跳转页面域名
+            }
+
+            // if(curHost.indexOf('test')!=-1){
+            // 	API_HOST='http://api.test.youxms.com/';//测试地址
+            // 	CUR_URLBACK='http://wap.test.youxms.com/';//测试回调地址
+            // }
+            // if(curHost.indexOf('https://wap.youxms.com')!=-1){
+            // 	API_HOST='https://apiwap.youxms.com/';//线上地址
+               	//CUR_URLBACK='https://wap.youxms.com/';//线上回调地址
+            // }</script><link href=/static/css/app.css?7401363a5f3978335086cee4de2e15f6 rel=stylesheet></head><body><div id=app></div><script src=/static/tsLib.js></script><script src=https://res.wx.qq.com/open/js/jweixin-1.0.0.js></script><script type=text/javascript src=/static/js/manifest.js?f18e4278c3caa629c522></script><script type=text/javascript src=/static/js/vendor.js?f35795caa7999c90641f></script><script type=text/javascript src=/static/js/app.js?73423015179fea57e45b></script></body></html>

@@ -1,14 +1,45 @@
 <template>
-  <div id="app">
-    <router-view/>
+  <div id="app" >
+    <div style="display:none">{{documentTit}}</div>   
+    <transition name="fade"  mode="out-in">
+    	<router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
-}
-</script>
+    data(){
+      return {
+        isLoading:true
+      }
+    },
+    computed: {
+      //设置标题
+        documentTit(){
+          document.title=this.$store.state.documentTitle;
+          return this.$store.state.documentTitle;
+       },
+      
+    },
+    created() {     
+       document.title=this.$store.state.documentTitle;//设置标题
+    },
+    components: {
+      
+    }
+    
+    
+  }
 
-<style>
+</script>
+<style lang="less">
+  .fade-enter-active, .fade-leave-active {
+    transition: all .3s ease;
+    /*transform: translateX(0px);*/
+  }
+  .fade-enter, .fade-leave-active {
+    /*transform: translateX(-100%);*/
+    opacity: 0;
+  }
 </style>

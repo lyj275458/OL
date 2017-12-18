@@ -1,30 +1,19 @@
-# weishihoutai
+# 基于vue.js搭建的一套适用于wap框架
+该平台基于vue+scss+es6+webpack，结合vue-router实现按需加载，状态管理使用vuex，数据请求采用vue官方推荐的axios。引用mint-ui第三方UI组件库并做了部分自定义。
 
-> A Vue.js project
+> Vue.js adminCMS project
 
 ## Build Setup
 
-``` bash
+
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve with hot reload at localhost:8082
+
+npm start
 
 # build for production with minification
+
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
