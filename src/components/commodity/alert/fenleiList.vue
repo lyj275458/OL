@@ -3,7 +3,7 @@
     <el-table
       v-loading="loading"
       :data="getAllTreeResult"
-      style="width: 100%">
+      style="width: 100%;">
       <el-table-column
         label="分类名称"
         width="100">
@@ -30,14 +30,15 @@
         width="100">
         <template slot-scope="scope">
           <span style="margin-left: 10px">{{ scope.row.image }}</span>
-          <!--<img src="http://www.quanjing.com/image/2017index/jj2.png" alt="">-->
+          <!--<img :src="scope.row.image | ToUrl" alt="">-->
         </template>
       </el-table-column>
       <el-table-column
         label="小图"
         width="100">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ scope.row.logo }}</span>
+          <span style="margin-left: 10px">{{ scope.row.logo}}</span>
+          <!--<img :src="scope.row.logo | ToUrl" alt="">-->
         </template>
       </el-table-column>
       <el-table-column
@@ -64,7 +65,7 @@
           <span style="margin-left: 10px" v-else></span>
         </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" width="252">
         <template slot-scope="scope">
           <el-button
             size="mini"

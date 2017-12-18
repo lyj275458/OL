@@ -52,7 +52,25 @@ const mutations = {//mutations内是改变state内的值得作用
     if(data.smallNum){
       state.result.updataSmall=data.obj
     }
-
+  },
+  //活动切换
+  activeChange (state,data){
+    if(data){
+      state.result.activeChange=data
+    }
+  },
+  //活动组件编辑
+  [types.GET_COMMODITY_RESULT] (state,res) {
+    if(res){
+      state.result.commodityResult=res
+    }
+  },
+  //组件add
+  [types.GET_ADD_COMMODITY] (state,res) {
+    if(res){
+      let arr=state.result.addCommodityResult.concat(res)
+      state.result.addCommodityResult=arr
+    }
   },
   //清除数据
   [types.CLEAR_ALL_DATA] (state){

@@ -83,6 +83,12 @@
           <el-menu-item index="9-2">公共接口</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
+      <el-submenu index="10">
+        <template slot="title"><i class="el-icon-picture-outline"></i>活动管理</template>
+        <el-menu-item-group>
+          <el-menu-item index="10-1">活动页面设计</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
 </el-aside>
 </template>
@@ -108,17 +114,14 @@ export default {
 }
 </script>
 
-<style scoped>
- .el-menu-item-group>div{
-	padding:0;height:0;
-}
-i.el-icon-red.te{
+<style>
+  .el-aside i.el-icon-red.te{
 	width: 10px;height: 10px;border-radius: 50%;background: red;margin:-14px 0 0 3px;
 }
-i.el-icon-num{
+  .el-aside i.el-icon-num{
 	line-height:18px;background: red;color:#fff;text-align: center;margin-right:5px;font-size:12px ;border-radius: 10px;
 }
-.el-aside{
-
+  .el-aside div.el-menu-item-group__title{
+padding:0;
 }
 </style>

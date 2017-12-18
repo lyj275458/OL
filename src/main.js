@@ -26,6 +26,10 @@ const vm = new Vue({
   template: '<App/>',
   components: { App }
 })
+//图片地址处理
+Vue.filter('ToUrl',function(val){
+  return 'http://ol-quan2017.oss-cn-shanghai.aliyuncs.com/'+val
+})
 //保留小数点后面两位
  Vue.filter('Tofix',function(val){
    if(val==''||val==null){

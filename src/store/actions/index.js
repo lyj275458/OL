@@ -8,7 +8,13 @@ import * as types from '../fetch/type';
 import { Message } from 'element-ui';
 //import { Loading } from 'element-ui';
 import api from '../fetch/api'
-
+var num=0
+var textCs=''
+  if(num==0){
+  textCs='/apis'
+  }else{
+    textCs='http://api-admin.olquan.cn/'
+  }
 const actions = {//actions,mutations内的方法只能有两个参数，一个是context一个是外部调用时传参，event事件对象参数除外
   //弹框修改属性
   popoverAlert(context,where,event){
@@ -53,6 +59,19 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
     context.commit('fenleiClassResultTypes',data)
     //context.dispatch('getProductSpecsActions')
   },
+  //活动切换
+  activeActions(context,data){
+    context.commit('activeChange',data)
+  },
+  //活动组件编辑
+  commodityActions(context,obj){
+    context.commit('GET_COMMODITY_RESULT',obj)
+  },
+  //组件add
+  addCommodityActions (context,obj) {
+    //let arr=context.state.result.addCommodityResult.push(obj)
+    context.commit('GET_ADD_COMMODITY',obj)
+  },
   //清除数据
   clearAllActions(context){
     context.commit('CLEAR_ALL_DATA')
@@ -62,7 +81,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
     // axios.defaults.baseURL = context.state.editor.axiosUrl;
     axios({
       method: 'post',
-      url: '/apis'+funUrl[0],
+      url:textCs+funUrl[0],
       dataType: 'JSON',
       data: qs.stringify(context.state.editor[funUrl[2]])
     })
@@ -90,7 +109,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
     // axios.defaults.baseURL = context.state.editor.axiosUrl;
     axios({
       method: 'get',
-      url: '/apis'+funUrl[0],
+      url:textCs+funUrl[0],
       dataType: 'JSON',
       params: context.state.editor[funUrl[2]]
     })
@@ -159,7 +178,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
     // axios.defaults.baseURL = context.state.editor.axiosUrl;
     axios({
       method: 'post',
-      url: '/apis'+funUrl[0],
+      url:textCs+funUrl[0],
       dataType: 'JSON',
       data: qs.stringify(context.state.editor[funUrl[2]])
     })
@@ -182,7 +201,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   //删除品牌
   deletePpActions (context,id) {
     context.commit('SET_DELETE_PPRESULT',id)
-    api.deletePpApi('/apis/product/brand/delete',qs.stringify(context.state.editor.deletePpMM)).then(res => {
+    api.deletePpApi(textCs+'/product/brand/delete',qs.stringify(context.state.editor.deletePpMM)).then(res => {
       if(res.ok){
         context.dispatch('mSuccess')
         context.dispatch('clearAllActions')
@@ -305,7 +324,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   //修改大规格明细
   updateProductSpecActions (context,data){
     context.commit('SET_UPDATE_PRODUCT_SPEC',data)
-    api.deletePpApi('/apis/product/category/spec/updateProductCategorySpec',qs.stringify(context.state.editor.updateProductSpecMM)).then(
+    api.deletePpApi(textCs+'/product/category/spec/updateProductCategorySpec',qs.stringify(context.state.editor.updateProductSpecMM)).then(
       res => {
         if(res.ok){
           context.dispatch('mSuccess')
@@ -327,7 +346,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   //修改一个小规格明细
   updateProductActions(context,data){
     context.commit('SET_UPDATE_PRODUCT',data)
-    api.deletePpApi('/apis/product/category/spec/updateProductCategorySpecDetail',qs.stringify(context.state.editor.updateProductMM)).then(
+    api.deletePpApi(textCs+'/product/category/spec/updateProductCategorySpecDetail',qs.stringify(context.state.editor.updateProductMM)).then(
       res => {
         if(res.ok){
           context.dispatch('mSuccess')
@@ -348,7 +367,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   //删除分类下的一个商品规格模板
   deleteProductActions(context,id){
     context.commit('SET_DELETE_PRODUCT',id)
-    api.deletePpApi('/apis/product/category/spec/deleteProductCategorySpec',qs.stringify(context.state.editor.deleteProductMM)).then(
+    api.deletePpApi(textCs+'/product/category/spec/deleteProductCategorySpec',qs.stringify(context.state.editor.deleteProductMM)).then(
       res =>{
         if(res.ok){
           context.dispatch('mSuccess')
@@ -367,7 +386,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   //删除大规格模板下的一个小规格
   deleteSpecDetailActions(context,id){
     context.commit('SET_DELETE_PRODUCT',id)
-    api.deletePpApi('/apis/product/category/spec/deleteProductCategorySpecDetail',qs.stringify(context.state.editor.deleteProductMM)).then(
+    api.deletePpApi(textCs+'/product/category/spec/deleteProductCategorySpecDetail',qs.stringify(context.state.editor.deleteProductMM)).then(
       res => {
         if(res.ok){
           context.dispatch('mSuccess')
@@ -388,7 +407,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   // 在分类下挂一个规格模板
   addProductSpecActions (context,data) {
     context.commit('SET_ADD_PRODUCT_SPEC',data)
-    api.addguige('/apis/product/category/spec/addProductCategorySpec',qs.stringify(context.state.editor.addProductSpecMM)).then(
+    api.addguige(textCs+'/product/category/spec/addProductCategorySpec',qs.stringify(context.state.editor.addProductSpecMM)).then(
       res => {
         let datas={
           id:context.state.result.FlDataResult.obj.id
@@ -412,7 +431,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
   //在分类下的一个大规格下添加一个小规格
   addProductSpecDetailActions (context,data) {
     context.commit('SET_ADD_PRODUCT_SPEC_DETAIL',data)
-    api.deletePpApi('/apis/product/category/spec/addProductCategorySpecDetail',qs.stringify(context.state.editor.addProductSpecDetailMM)).then(
+    api.deletePpApi(textCs+'/product/category/spec/addProductCategorySpecDetail',qs.stringify(context.state.editor.addProductSpecDetailMM)).then(
       res => {
         if(res.ok){
           context.dispatch('mSuccess')
@@ -525,6 +544,7 @@ const actions = {//actions,mutations内的方法只能有两个参数，一个�
       context.commit('GET_VALUE_4',time)
     }
   },
+
 
 
   alertshow(context){

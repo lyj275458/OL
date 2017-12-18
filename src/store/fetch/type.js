@@ -80,6 +80,11 @@ export const GET_SMALL_CITYLIST = 'GET_SMALL_CITYLIST';
 export const GET_XIANJI_LIST = 'GET_XIANJI_LIST';
 //时间选择接受
 export const GET_VALUE_4 = 'GET_VALUE_4';
+//组件编辑
+export const GET_COMMODITY_RESULT = 'GET_COMMODITY_RESULT';
+//组件add和remove
+export const REMOVE_ADD_COMMODITY = 'REMOVE_ADD_COMMODITY';
+export const GET_ADD_COMMODITY = 'GET_ADD_COMMODITY';
 
 
 

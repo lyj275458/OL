@@ -14,8 +14,12 @@
 </style>
 <script>
   import vBalance from './balance.vue'
-//品牌
-  import vNewPush from '../commodity/alert/newPush.vue'
+//活动管理
+  import vAddSubass from './addSubass.vue'
+  import vAddGoods from './addGoods.vue'
+  import Vdetail from './detail.vue'
+
+
   import { mapActions } from 'vuex'
   import { mapGetters } from 'vuex'
   export default {
@@ -25,7 +29,7 @@
       };
     },
     components:{
-     vBalance,vNewPush
+     vBalance,vAddSubass,vAddGoods,Vdetail
 
     },
     methods: {

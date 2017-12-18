@@ -24,8 +24,11 @@ import AccountWithdrawals from '@/components/AccountFund/subassembly/AccountWith
 import cashDeposit from '@/components/AccountFund/subassembly/cashDeposit.vue'
 import controlInvoices from '@/components/AccountFund/subassembly/controlInvoices.vue'
 import withholdingDetain from '@/components/AccountFund/subassembly/withholdingDetain.vue'
+//活动模块
+import Active from '@/components/activeList/subassembly/huodong.vue'
 
-import Login from '@/components/firstPage/login.vue'
+
+import Yemian from '@/components/firstPage/yemian.vue'
 import Toindex from '@/components/commodity/subassembly/toindex.vue'
 //模块5
 import OnlineState from '@/components/CustomerService/subassembly/OnlineState.vue'
@@ -164,6 +167,11 @@ export default new Router({
             name:"NewsSet",
             component:NewsSet
           },
+        {
+          path: '10-1',
+          name:"Active",
+          component:Active
+        },
           {
             path: 'index',
             name:"Toindex",
@@ -172,9 +180,9 @@ export default new Router({
                ]
     },
     {
-    	path: '/login',
-      name: 'Login',
-      component: Login
+    	path: '/Yemian',
+      name: 'Yemian',
+      component: Yemian
     }
   ],
   scrollBehavior (to, from, savedPosition) {//路由切换时滚轮位置

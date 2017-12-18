@@ -593,6 +593,12 @@ const result = { //接收请求后的数据
   updataSmall:{},
   //loading
   loading:false,
+  //活动管理切换
+  activeChange:'vSeachActive',
+  //活动组件编辑接受
+  commodityResult:{},
+  //组件添加
+  addCommodityResult:[],
 
   loginResult:[],
   dingdanListResult:[]

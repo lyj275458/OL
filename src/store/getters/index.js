@@ -93,6 +93,20 @@
    value4Result: state => {
      return state.result.value4Result
    },
+  //活动切换
+    activeChangeResult: state => {
+     return state.result.activeChange
+    },
+  //活动组件编辑
+    commodityResult: state => {
+     return state.result.commodityResult
+    },
+  //组件add
+    addCommodityResult: state => {
+     return state.result.addCommodityResult
+    },
+//textCs
+
 
     alertnum: state => {
       return state.editor.num
