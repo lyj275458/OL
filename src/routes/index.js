@@ -183,6 +183,42 @@ export default [
             }, 'tryCenter');
         }
         
+    },{//更多试用
+        path: '/try/moretry',
+        
+        component: resolve => {
+            require.ensure(['../containers/try/moretry.vue'], () => {
+                resolve(require('../containers/try/moretry.vue'));
+            }, 'tryMoretry');
+        }
+        
+    },{//更多试用
+        path: '/try/trygoods/id/:id',
+        
+        component: resolve => {
+            require.ensure(['../containers/try/trygoods.vue'], () => {
+                resolve(require('../containers/try/trygoods.vue'));
+            }, 'tryGoods');
+        }
+        
+    },{//拼团分类
+        path: '/index/moreindex/id/:id',
+        
+        component: resolve => {
+            require.ensure(['../containers/index/moreindex.vue'], () => {
+                resolve(require('../containers/index/moreindex.vue'));
+            }, 'indexMore');
+        }
+        
+    },{//更多试用列表
+        path: '/try/detailtry/id/:id',
+        
+        component: resolve => {
+            require.ensure(['../containers/try/detailtry.vue'], () => {
+                resolve(require('../containers/try/detailtry.vue'));
+            }, 'detailTry');
+        }
+        
     }
 
     ,{

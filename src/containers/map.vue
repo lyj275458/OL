@@ -52,6 +52,18 @@
 			<li>
 				<a href="/try/center">试用首页</a>
 			</li>
+			<li>
+				<a href="/try/moretry">更多试用</a>
+			</li>
+			<li>
+				<a href="/try/detailtry">试用列表</a>
+			</li>
+			<li>
+				<a href="/try/trygoods">试用产品</a>
+			</li>
+			<li>
+				<a href="/index/moreindex">拼团分类</a>
+			</li>
 		</ul>
 		
 		</div>

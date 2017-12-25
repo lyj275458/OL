@@ -36,10 +36,13 @@
 			</p>
 			<p v-else style="height: 0;"></p>
 			<div class="button" @click="shareOrder" v-show="curObj.status==0 || curObj.status==1">
-				<p>邀请好友拼团</p>
+				<p style="background: #fe3491;">邀请好友拼团</p>
 			</div>
 			<div class="button" @click="detailOrder" v-show="curObj.status==2">
-				<p>重新拼团</p>
+				<p style="background: #fe3491;">重新拼团</p>
+			</div>
+			<div class="button" @click="detailOrder" v-show="curObj.status==3">
+				<p>产品已下架无法拼团</p>
 			</div>
 			<!--<div class="button" @click="buyGoods(curObj.productId)" v-show="curObj.plusCount!=0">
 				<p>参与拼团</p>
@@ -253,42 +256,6 @@
 				this.listObj=data.result;
 				
 			},
-//			//获取更多
-//			handleScroll () {
-//			  var height=document.body.scrollHeight;
-//				//console.log(height)
-//			  this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-//				//console.log(this.scrollTop)
-//			  var windowH=window.innerHeight;
-//			  if(this.scrollTop + windowH >=height-200){
-//			  	if(this.isMore){
-//	 				this.isMore=false;
-//	 				let data={
-//	  					page:this.pageObj.page+1,
-//	  					rows:20,
-//	  					//productId:this.productId
-//	  				};
-//	  				this.pageObj.page=this.pageObj.page+1
-//					this.$store.state.ajaxObj.comAjax(this.$store.state.ajaxObj.API.getBestTogetherList,data,this.getListMoreBack);
-//	 			}
-//			  }
-//	 			
-//			},
-//			getListMoreBack(data){
-//				if(data.result.length<20){
-//					this.isMore=false;
-//					this.showTrue=true;
-//				}else{
-//					this.isMore=true;
-//				}
-//				
-//				
-//				for(let i=0; i<data.result.length; i++){
-//					this.listObj.push(data.result[i])
-//				}
-//				//console.log(this.curObj)
-//			
-//			},
 			//点击相关产品
 			getPordcut(id){
 				//console.log(id)
@@ -588,7 +555,11 @@
 			p{
 				width: 7.02rem;
 				height: .88rem;
-				background:#fe3491 ;
+				
+				background: -webkit-linear-gradient(left, #bbbbbb , #949594); /* Safari 5.1 - 6.0 */
+			    background: -o-linear-gradient(right, #bbbbbb, #949594); /* Opera 11.1 - 12.0 */
+			    background: -moz-linear-gradient(right, #bbbbbb, #949594); /* Firefox 3.6 - 15 */
+			    background: linear-gradient(to right, #bbbbbb , #949594); /* 标准的语法 */
 				border-radius: 0.05rem;
 				font-size: .32rem;
 				color: #fff;

@@ -30,6 +30,14 @@ const API = {
       recommendProduct:'mobile/product/recommendProduct',//产品相关的推荐产品
       getStoreFee:'/mobile/store/getStoreFee',//开通粉领价格
       getScoreDataAll:'mobile/oneYuanBuy/getScoreDataAll',//试用中心
+      getFreeUseTimes:'mobile/freeUse/getFreeUseTimes',//免费试用时间段
+      getFreeUseData:'mobile/freeUse/getFreeUseData',//获取免费试用产品
+      productDetail:'mobile/product/productDetail',//获取产品详情
+      getNewTogetherBanners:'mobile/together/getNewTogetherBanners',//拼团活动页轮播及分类
+      getTogetherCategoryDetail:'mobile/together/getTogetherCategoryDetail',//拼团分类详情
+      doCollect:'mobile/collect/doCollect',//收藏
+      cateGories:'mobile/freeUse/categories',//获取试用分类
+      freeUseHomePage:'mobile/freeUse/freeUseHomePage',//获取试用详情
 };
 function getCookie(argument) {
     var arrCookie = document.cookie.split(";");

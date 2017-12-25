@@ -4,46 +4,32 @@
 		<p class="bot"></p>
 		<p class="cent" v-bind:style="{width:Number(perWidth.split('%')[0])/100*3+'rem'}"></p>
 	</div>-->
-	<div class="tryIndex">
+	<div class="tryIndex" >
+		
+		<Linking></Linking>
 		<swiper loop auto :list="urlList" height='3.40rem'  dots-position='center' v-show="urlList.length!=0"></swiper>
 		<div class="message">
 			
 			<div class="leftfen">
 				<img :src="tryfenImg"/>
 				
-				<span>我的积分：</span>
+				<span>我的积分：{{memList.score}}</span>
 			</div>
-			<div class="leftmine">
+			<div class="leftmine" @click='getTry'>
 				<img :src="trymineImg"/>
-				<span>我的试用：</span>
+				<span>我的试用</span>
 			</div>
 		</div>
 		<div class="benefit">
 			<ul>
-				<li>
-					<img :src="indexImg"/>
-					<span>首页</span>
-				</li>
-				<li>
-					<img :src="pinpinImg"/>
-					<span>拼团</span>
-				</li>
-				<li>
-					<img :src="zhuanxiangImg"/>
-					<span>粉领会员</span>
-				</li>
-				<li>
-					<img :src="shiyongImg"/>
-					<span>试用中心</span>
-				</li>
-				<li>
-					<img :src="temaiImg"/>
-					<span>品牌特卖</span>
+				<li v-for="item in cateObj" @click="getNomore(item.id,item.categoryType)">
+					<img :src="item.categoryIcon"/>
+					<span>{{item.categoryName}}</span>
 				</li>
 				
 			</ul>
 		</div>
-		<div class="goods-name" v-for="item in curObj">
+		<div class="goods-name" v-for="item in curObj" @click='gototry(item.productId)'>
 			<div class="food" >
 				<div class="fodImg">
 					<img :src="item.image"/>
@@ -79,27 +65,87 @@
 				zhuanxiangImg:'/static/images/zhuanxiang.png',
 				pinpinImg:'/static/images/pinpin.png',
 				temaiImg:'/static/images/temai.png',
-				curObj:[]
+				
+				curObj:[],
+				memList:[],
+				isMore:true,
+				pageObj:{
+					page:1,
+				},
+				cateObj:[],
+				shareData : {
+					'title': "OL圈 试用中心",
+					'description': "试,是一种态度。每日10,20点限量开抢！",
+					'url': "",
+					'picURL': "http://ol-site.olquan.com/plug/mobile/img/logoo.jpg",
+					'hide':true,
+					'share':false
+				},
+				
 			}
 		},
 		components: {
 		    Swiper
 		},
 		created: function() {
+			this.$store.commit('documentTitle','试用中心');
 			this.getImgtop();
 			this.getList();
+			this.getCate();
+		},
+		mounted(){
+			this.addWeixinShare();//微信分享 	
+			window.addEventListener('scroll', this.handleScroll);
 		},
 		methods:{
-			//轮播图获取
-			getImgtop(){
+			//获取试用分类
+			getCate(){
 				let data={
 					
 				}
-				this.$store.state.ajaxObj.comAjax(this.$store.state.ajaxObj.API.getTogetherBanners,data,this.getImgBack);
+				this.$store.state.ajaxObj.comAjax(this.$store.state.ajaxObj.API.cateGories,data,this.getCateBack,this);
+			},
+			getCateBack(data){
+				console.log(data)
+				this.cateObj=data.result;
+			},
+			
+			//点击试用分类
+			getNomore(id,type){
+				console.log(id)
+				console.log(type)
+				if(type==2){
+					this.$router.push({path:'/try/moretry'+'?memberId='+this.$route.query.memberId});
+				}else if(type==3){
+					window.location.href=API_HOST+'weixin/protocol/protocol?code=freeUseDesc';
+				}else if(type==4){
+					window.location.href=API_HOST+'ol/buy-zd.html?memberId'+this.$route.query.memberId;
+				}else if(type==1){
+					this.$router.push({path:'/try/detailtry/id/'+id+'?memberId='+this.$route.query.memberId});
+				}
+			},
+			//点击我的试用
+			getTry(){
+				window.location.href=API_HOST+'weixin/member/freeUseCore?mmm='+this.$route.query.memberId;
+			},
+			//点击列表商品
+			gototry(id){
+				console.log(id)
+				this.$router.push({path:'/try/trygoods/id/'+id+'?memberId='+this.$route.query.memberId});
+			},
+			
+			//轮播图获取
+			getImgtop(){
+				let data={
+					memberId:this.$route.query.memberId,
+				}
+				this.$store.state.ajaxObj.comAjax(this.$store.state.ajaxObj.API.freeUseHomePage,data,this.getImgBack);
 			},
 			getImgBack(data){
-				if(data.result){
-					this.imgObj=data.result;
+				this.memList=data.result;
+				
+				if(data.result.banners){
+					this.imgObj=data.result.banners;
 				}else{
 					this.imgObj=[];
 				}
@@ -120,13 +166,65 @@
 			getListBack(data){
 				console.log(data)
 				this.curObj=data.result;
+				//this.shareData.url="http://ol-site.olquan.com/weixin/auth?recId="+this.$route.query.memberId+"&view="+encodeURIComponent(CUR_URLBACK+'try/center');
+				this.shareData.url="http://test-mobile.olquan.cn/weixin/auth?recId="+this.$route.query.memberId+"&view="+encodeURIComponent(CUR_URLBACK+'try/center');
 			},
+			handleScroll () {
+  			  var height=document.body.scrollHeight;
+  				//console.log(height)
+			  var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+				//console.log(this.scrollTop)
+			  var windowH=window.innerHeight;
+			  if(scrollTop + windowH >=height-200){
+			  	if(this.isMore){
+	 				this.isMore=false;
+	 				let data={
+	  					page:this.pageObj.page+1,
+	  					rows:20,
+	  				};
+	  				this.pageObj.page=this.pageObj.page+1
+					this.$store.state.ajaxObj.comAjax(this.$store.state.ajaxObj.API.getScoreDataAll,data,this.getListMoreBack);
+	 			}
+			  }
+	 			
+			},
+			getListMoreBack(data){
+				if(data.result.length<20){
+					this.isMore=false;
+					
+				}else{
+					this.isMore=true;
+				}
+				for(let i=0; i<data.result.length; i++){
+					this.curObj.push(data.result[i])
+				}
+				
+				console.log(this.curObj)
+			
+			},
+						//微信分享 
+				  addWeixinShare:function(){
+					var data = {                 
+						"url":location.href,
+						"callback":'',
+				    };
+				  // console.log(location.href)
+				    
+				    this.$store.state.ajaxObj.comAjax(this.$store.state.ajaxObj.API.weixinShare,data,this.shareBack,this);			
+				  },
+				  shareBack:function(data){
+					//调用共用的分享接口
+					//console.log(JSON.stringify(data.result))
+					this.wxShareFun(data.result,this.shareData);
+					//this.locationWx(data);
+				  },
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	.tryIndex{
+		
 		.message{
 			display: flex;
 			display:-webkit-box;
@@ -143,6 +241,8 @@
 			background: #fff;
 			line-height: .64rem;
 			.leftfen{
+				width: 50%;
+				text-align: center;
 				img{
 					display: inline-block;
 					width: .28rem;
@@ -154,6 +254,8 @@
 				}
 			}
 			.leftmine{
+				text-align: center;
+				width: 50%;
 				img{
 					display: inline-block;
 					width: .23rem;
@@ -179,6 +281,10 @@
 				justify-content:flex-start;
 				-moz-box-pack:flex-start;
 				-webkit--moz-box-pack:flex-start;
+				flex-wrap:wrap;
+				-webkit-flex-wrap:wrap;
+				-webkit-box-lines:multiple;
+				-moz-flex-wrap:wrap;
 				
 				li{
 					margin-bottom: .20rem;
@@ -217,6 +323,7 @@
 			}
 		}
 		.goods-name{
+			overflow: hidden;
 		.food{
 			padding:  .45rem .24rem .40rem;
 			overflow: hidden;

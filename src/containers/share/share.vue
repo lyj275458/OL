@@ -64,7 +64,8 @@
 				<img class="close" :src="colseImg" @click="closeShow"/>
 				<img :src="curObj.productImage"  class="productImage"/>
 				<p class="detail">
-					<span class="money">￥{{curObj.togetherPrice}}</span><br />
+					<span class="money" v-show="showMoney!=0">￥{{getNomoreObj.salePriceView}}</span><br />
+					<span class="money" v-show="showMoney==0">￥{{curObj.togetherPrice}}</span><br />
 					<!--<span class="num" v-if='this.getNomoreObj.store'>&nbsp;库存{{getNomoreObj.store}}件</span>-->
 				</p>
 				<!--<div class="noMores" v-for="item in curObj.normals">
@@ -202,7 +203,7 @@
 				pinpinImg:'/static/images/pinpin.png',
 				temaiImg:'/static/images/temai.png',
 				showHeigth:false,
-				curObj:{},
+				curObj:[],
 				time:'',
 				day:'',
 				hour:'',
@@ -240,7 +241,8 @@
 					'hide':true,
 					'share':false
 				},
-				maxNumber:0
+				maxNumber:0,
+				showMoney:0
 				
 			}
 		},
@@ -316,7 +318,8 @@
 				this.getOrderDetail();
 				this.time=this.curObj.endTime.replace(/-/g,"/");
 				this.shareData.picURL=this.curObj.productImage;
-				
+				this.showMoney=this.curObj.normals.length;
+				console.log(this.showMoney)
 				//this.shareData.url="http://ol-site.olquan.com/weixin/auth?recId="+this.$route.query.memberId+"&view="+encodeURIComponent(CUR_URLBACK+'share/share?id='+this.$route.query.id);
 				this.shareData.url="http://test-mobile.olquan.cn/weixin/auth?recId="+this.$route.query.memberId+"&view="+encodeURIComponent(CUR_URLBACK+'share/share?id='+this.$route.query.id);
 				this.shareData.title='【OL圈拼团】我花了'+this.curObj.togetherPrice+'元买了'+this.curObj.productName;
@@ -454,8 +457,10 @@
 					valueIds:this.getVlaueOne+','+this.getVlaueTwo,
 					uutype:1,
 					memberId:this.$route.query.memberId,
+					type:11
 				}
-				console.log(data)
+				console.log(this.getVlaueOne)
+				console.log(this.getVlaueTwo)
 				this.$store.state.ajaxObj.comAjax(this.$store.state.ajaxObj.API.getNormal,data,this.getNormalBack,this);
 			},
 			getVlauetwo(index,valueId){
